@@ -1,0 +1,11 @@
+.DeleteButton {
+    background: 0;
+    font-size: 0.8em;
+    cursor: pointer;
+    opacity: 0.5;
+  
+    &:hover {
+      opacity: 1;
+    }
+  }
+  

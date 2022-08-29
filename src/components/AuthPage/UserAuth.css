@@ -1,0 +1,7 @@
+UserAuth {
+    padding: var(--padding);
+
+    .Data {
+        padding: 30px;
+    }
+}
