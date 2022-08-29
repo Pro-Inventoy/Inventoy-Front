@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@ericblade/quagga2": "^1.7.1",
     "@mui/icons-material": "^5.10.2",
     "@mui/material": "^5.10.2",
     "@mui/styled-engine-sc": "^5.10.1",
@@ -13,6 +14,7 @@
     "@supabase/supabase-js": "^1.35.6",
     "classnames": "^2.3.1",
     "expo-camera": "^12.3.0",
+    "quagga": "^0.12.1",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.8",
     "react-dom": "^18.2.0",

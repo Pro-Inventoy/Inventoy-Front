@@ -7,7 +7,7 @@ import Users from './Users/Users.jsx'
 import Profile from './Profile/Profile.jsx'
 import Layout from './Page/Layout.jsx'
 import UserAuth from './AuthPage/UserAuth.jsx'
-import Scanner from './Scanner/Scanner.jsx'
+import Barcode from './Scanner/Barcode.jsx'
 import { UserProvider } from '../state/context/UserContext.jsx';
 import './App.css'
 export default function App() {
@@ -24,7 +24,7 @@ export default function App() {
                     <Route path="orders" element={<Orders />} />
                     <Route path="users" element={<Users />} />
                     <Route path="profile" element={<Profile />} />
-                    <Route path="scanner" element={<Scanner />} />
+                    <Route path="scanner" element={<Barcode />} />
                 </Route>
             </Routes>
         </Router>
