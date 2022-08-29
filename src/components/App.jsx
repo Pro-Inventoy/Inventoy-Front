@@ -8,10 +8,12 @@ import Profile from './Profile/Profile.jsx'
 import Layout from './Page/Layout.jsx'
 import UserAuth from './AuthPage/UserAuth.jsx'
 import Scanner from './Scanner/Scanner.jsx'
+import { UserProvider } from '../state/context/UserContext.jsx';
 import './App.css'
 export default function App() {
   return (
     <div>
+      <UserProvider>
         <Router>
             <Routes>
               <Route path="user/*" element={<UserAuth />} />
@@ -26,6 +28,7 @@ export default function App() {
                 </Route>
             </Routes>
         </Router>
+      </UserProvider>
     </div>
   )
 }
