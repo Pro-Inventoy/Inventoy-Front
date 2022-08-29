@@ -4,7 +4,7 @@ export async function getItems() {
   const response = await client
   .from('Inventory')
   .select(`
-    inventoryId,
+    id,
     itemname,
     quantity,
     cost,
@@ -12,14 +12,14 @@ export async function getItems() {
     category_name
     )
   `)
-  .order('inventoryId')
+  .order('id')
   return response;
 }
 
-export async function updateQuantity(quantity, inventoryId) {
+export async function updateQuantity(quantity, id) {
   const response = await client
     .from('Inventory')
-    .upsert({ 'inventoryId': inventoryId, 'quantity': quantity });
+    .upsert({ 'id': id, 'quantity': quantity });
   return response;
 }
 
