@@ -15,7 +15,7 @@ class Hamburger extends React.Component {
       // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
       return (
         <Menu>
-          <a id="Home" className="menu-item" href="/">{home}Home</a>
+          <a id="Home" className="menu-item" href="/">{home} Home </a>
           <a id="Inventory" className="menu-item" href="/inventory">{wareHouse}Inventory</a>
           <a id="Orders" className="menu-item" href="/orders">{handTruck}Orders</a>
           <a id="Users" className="menu-item" href="/users">{persons} Users</a>
