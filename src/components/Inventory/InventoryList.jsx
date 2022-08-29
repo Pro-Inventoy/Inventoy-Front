@@ -7,12 +7,12 @@ export default function InventoryList() {
 
   return (
     <span>
-      <Grid/>
-      <ul>
+      <Grid items={items}/>
+      {/* <ul>
         {items.map((inventory) => (
-          <InventoryItem key={inventory.inventoryId} item={inventory}/>
+          <InventoryItem key={inventory.id} item={inventory}/>
         ))}
-      </ul>
+      </ul> */}
     </span>
   );
 }

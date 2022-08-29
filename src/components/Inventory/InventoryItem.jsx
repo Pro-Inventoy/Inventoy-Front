@@ -15,7 +15,7 @@ export default function InventoryItem({item}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateQuantity(quantity, item.inventoryId);
+    await updateQuantity(quantity, item.id);
     toggleEdit();
   };
 
@@ -25,7 +25,7 @@ export default function InventoryItem({item}) {
         pressing enter submits that quantity and makes "editing" false
         if it's false, show a button to start editing
         "editing" defaults false*/}
-      Quantity: <b>{editing ?
+      <b>{editing ?
     <form className='inventoryAddForm' onSubmit={handleSubmit}>
       <InputControl
         type={'number'}
