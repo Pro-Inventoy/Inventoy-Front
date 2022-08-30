@@ -17,7 +17,8 @@ input[type="number"] {
     padding-bottom: 10px !important;
 }
 
-.inventoryAddForm {
-    background-color: bisque;
+.inventoryinput {
+    background-color: rgb(61, 38, 11);
     display: inline;
+    height: 100px;
 }
