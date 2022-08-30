@@ -26,16 +26,20 @@ export default function AddInventory() {
   };
   
   return (
-    <div>
+    <div className="divwrapper">
     <form className='inventoryAddForm' onSubmit={handleSubmit}>
-      <div className="formycontrolly">
-      <InputControl
+      <div className="divwrap">
+        <div>
+      <InputControl className="compstyle"
         type={'number'}
         label={'Quantity '}
         value={quantity}
         onChange={handleQuantity}
       />
-      <SelectControl
+      </div>
+     
+      <div>
+      <SelectControl className="compstyle2"
             type={'string'}
             label={'Category '}
             value={category}
@@ -48,21 +52,32 @@ export default function AddInventory() {
         ))}
       </SelectControl>
       </div>
-      <div className="formycontrolly">
-      <InputControl
+
+      </div>
+
+
+
+      <div className="divwrap">
+        <div>
+          <InputControl className="compstyle"
         type={'number'}
         label={'Cost '}
         value={cost}
         onChange={handleCost}
-      />
-      <InputControl
+           />
+        </div>
+      
+        <div>
+      <InputControl className="compstyle3"
         type={'string'}
-        label={'Item Name ' }
+        label={'Item ' }
         value={itemName}
         onChange={handleItemName}
       />
       <FormButton>Add</FormButton>
+        </div>
       </div>
+      
       
     </form>
       <button className='scannerButton' onClick={() =>{window.location.replace('./scanner')}}>📷</button>
