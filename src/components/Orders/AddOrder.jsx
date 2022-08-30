@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useItems } from '../../state/hooks/inventory';
 import { useUsers } from '../../state/hooks/user';
 import { addOrder, getIdOfItem } from '../../state/services/order-service';
+import { addTransaction } from '../../state/services/transaction-service';
 import { FormButton, InputControl, SelectControl } from '../Forms/FormControl';
 import './AddOrder.css';
 
@@ -16,18 +17,20 @@ export default function AddOrder() {
   const handleLabel = ({ target }) => setLabel(target.value);
   const allItems = useItems();
   const allUsers = useUsers();
-// const allUsers = [{empname: 'Armstrong'}, {empname:'Jon Arbuckle'}];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const computedUser = await getIdOfUser(employee);
+    // TODO const computedUser = await getIdOfUser(employee);
     const computedUser = 1;
     const computedItem = await getIdOfItem(item);
     await addOrder({ label: label, orderquantity: quantity, productId: computedItem, userId: computedUser})
+    //TODO auth getuser
+    await addTransaction({user: 1, content:' ordered ' + quantity + ' ' + item});
     setQuantity(0);
     setLabel(0);
     setItem('');
   };
+
   return (
     <div>
     <form className='orderAddForm' onSubmit={handleSubmit}>
