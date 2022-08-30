@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signInUser, signupUser } from '../../state/services/supabase-utils';
-
+// import { Auth } from '@sup'
+import client from '../../state/services/client';
 export default function AuthPage({ setCurrentUser }) {
 
   const [signUpEmail, setSignUpEmail] = useState('');
@@ -15,7 +16,10 @@ export default function AuthPage({ setCurrentUser }) {
     setSignUpPassword('');
   }
 
-  
+  const handleOauth = async (provider) => {
+    let { error } = await client.auth.signIn({ provider });
+    if(error) console.log("Error: ", error.message)
+  }
   async function handleSignUp(e) {
     e.preventDefault();
 
@@ -37,6 +41,8 @@ export default function AuthPage({ setCurrentUser }) {
   return (
     <div className="home-page">
       <div className='login-form'>
+        <button 
+          onClick={(() => handleOauth("google"))}>Sign in Google</button>
         <form className="form-input" onSubmit={handleSignUp}>
           <h2>Sign Up</h2>
           <label>
@@ -68,3 +74,4 @@ export default function AuthPage({ setCurrentUser }) {
     </div>
   );
 }
+
