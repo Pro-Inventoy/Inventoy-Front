@@ -65,6 +65,7 @@ export default function AddInventory() {
       </div>
       
     </form>
+      <button className='scannerButton' onClick={() =>{window.location.replace('./scanner')}}>📷</button>
     </div>
   )
 }

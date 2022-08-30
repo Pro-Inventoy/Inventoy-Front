@@ -1,25 +1,24 @@
 import * as React from 'react';
 import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid';
 import { updateQuantity } from '../../state/services/inventory-service';
-export default function Grid( {items}) {
-    const inventory = items.map(item => ({
-        "id": item.id,
-        "itemname": item.itemname,
-        "quantity": item.quantity,
-        "cost": item.cost,
-        "category_name": item.Categories.category_name,
-        "totalCost": Math.ceil(item.quantity * item.cost),
-      }
-    ))
+import { useItems } from '../../state/hooks/inventory';
+export default function Grid() {
+  const items = useItems();
+  const inventory = items.map(item => ({
+      "id": item.id,
+      "itemname": item.itemname,
+      "quantity": item.quantity,
+      "cost": item.cost,
+      "category_name": item.Categories.category_name,
+    }
+  ))
   
   const columns =  [
     { field: 'id', headerName: 'Item ID', width: 60 },
     { field: 'itemname', headerName: 'Item', width: 250 },
     { field: 'quantity', headerName: 'Quantity', width: 150, editable: true },
-    { field: 'totalCost', headerName: 'Total Cost', width: 150 },
     { field: 'category_name', headerName: 'Category', width: 150 },
   ];
-  
   
 
 return (
