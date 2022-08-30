@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useCategories } from '../../state/hooks/inventory';
 import { addItem, getIdOfCategory } from '../../state/services/inventory-service';
 import { FormButton, InputControl, SelectControl } from '../Forms/FormControl';
+import './AddInventory.css'
 
 export default function AddInventory() {
   const [quantity, setQuantity] = useState(0);
@@ -27,15 +28,16 @@ export default function AddInventory() {
   return (
     <div>
     <form className='inventoryAddForm' onSubmit={handleSubmit}>
+      <div className="formycontrolly">
       <InputControl
         type={'number'}
-        label={'quantity'}
+        label={'Quantity '}
         value={quantity}
         onChange={handleQuantity}
       />
       <SelectControl
             type={'string'}
-            label={'category'}
+            label={'Category '}
             value={category}
             onChange={handleCategory}>
         <option></option>
@@ -45,19 +47,23 @@ export default function AddInventory() {
           </option>
         ))}
       </SelectControl>
+      </div>
+      <div className="formycontrolly">
       <InputControl
         type={'number'}
-        label={'cost'}
+        label={'Cost '}
         value={cost}
         onChange={handleCost}
       />
       <InputControl
         type={'string'}
-        label={'item name'}
+        label={'Item Name ' }
         value={itemName}
         onChange={handleItemName}
       />
       <FormButton>Add</FormButton>
+      </div>
+      
     </form>
     </div>
   )

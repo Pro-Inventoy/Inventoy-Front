@@ -16,3 +16,9 @@ input[type="number"] {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
 }
+
+.inventoryinput {
+    background-color: rgb(61, 38, 11);
+    display: inline;
+    height: 100px;
+}

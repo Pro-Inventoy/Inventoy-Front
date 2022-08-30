@@ -8,7 +8,6 @@ export default function Inventory() {
  {/* <NavBar/>
      <FolderBar />
      <SearchBar /> */}
-    <Cards/>
     <AddInventory />
     <InventoryList />
     </div>

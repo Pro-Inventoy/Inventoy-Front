@@ -1,16 +1,13 @@
 import { Children, cloneElement, forwardRef } from 'react';
-import classNames from 'classnames';
-import styles from './FormControls.css';
+import './FormControls.css';
 
 function FormControl({
   label,
-  children,
-  className: customClassName,
+  children
 }) {
-  const className = classNames(styles.FormControl, customClassName);
 
   return (
-    <label className={className}>
+    <label className="formycontrolly">
       <LabelText text={label} />
       {children}
     </label>
@@ -20,13 +17,12 @@ function FormControl({
 function LabelText({ text, as: Tag = 'span' }) {
   if (!text) return null;
 
-  const className = classNames(styles.Label, 'label-text');
-  return <Tag className={className}>{text}</Tag>;
+  return <Tag >{text}</Tag>;
 }
 
 function Option({ text, type, ...rest }) {
   return (
-    <label className={styles.CheckboxLabel}>
+    <label>
       <input type={type} {...rest} />
       {text}
     </label>
@@ -43,7 +39,7 @@ export function RadioOption(props) {
 
 export function CheckboxControl({ label, ...rest }) {
   return (
-    <div className={styles.FormControl}>
+    <div>
       <LabelText text={label} />
       <CheckboxOption {...rest} />
     </div>
@@ -58,11 +54,10 @@ export function OptionGroupControl({
   children,
 }) {
   return (
-    <div className={styles.FormControl}>
+    <div>
       <fieldset>
         <LabelText text={label} as="legend" />
         <div
-          className={styles.Options}
           style={{
             gridTemplateColumns: `repeat(
             auto-fill,
@@ -85,10 +80,10 @@ const verifyValue = (props) => {
 };
 
 export const InputControl = forwardRef((props, ref) => {
-  const { label, className, ...rest } = props;
+  const { label, ...rest } = props;
   verifyValue(rest); 
   return (
-    <FormControl label={label} className={className}>
+    <FormControl className="formycontrolly" label={label}>
       <input ref={ref} {...rest} />
     </FormControl>
   );
@@ -127,25 +122,24 @@ TextAreaControl.displayName = 'TextAreaControl';
 
 export function FormButton({
   children,
-  className: customClassName,
   ...rest
 }) {
-  const className = classNames(styles.FormButton, customClassName);
+
 
   return (
-    <button className={className} {...rest}>
+    <button {...rest}>
       {children}
     </button>
   );
 }
 
 export function FormButtonControl(props) {
-  return <FormButton className={styles.FormControl} {...props} />;
+  return <FormButton {...props} />;
 }
 
 export function Fieldset({ legend, children }) {
   return (
-    <fieldset className={styles.Fieldset}>
+    <fieldset>
       <legend>{legend}</legend>
       {children}
     </fieldset>
