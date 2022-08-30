@@ -32,7 +32,7 @@ export default function AddInventory() {
         <div>
       <InputControl className="compstyle"
         type={'number'}
-        label={'Quantity '}
+        label={'Quantity'}
         value={quantity}
         onChange={handleQuantity}
       />
@@ -41,7 +41,7 @@ export default function AddInventory() {
       <div>
       <SelectControl className="compstyle2"
             type={'string'}
-            label={'Category '}
+            label={'Category'}
             value={category}
             onChange={handleCategory}>
         <option></option>
@@ -61,24 +61,31 @@ export default function AddInventory() {
         <div>
           <InputControl className="compstyle"
         type={'number'}
-        label={'Cost '}
+        label={'Cost'}
         value={cost}
         onChange={handleCost}
            />
         </div>
       
         <div>
+      
       <InputControl className="compstyle3"
         type={'string'}
-        label={'Item ' }
+        label={'Item' }
         value={itemName}
         onChange={handleItemName}
+        placeholder={'Name'}
       />
-      <FormButton>Add</FormButton>
+      
+      
+      
         </div>
+        
       </div>
       
-      
+      <div className="divwrap">
+        <FormButton className="addbutton">Add<br/>Item</FormButton>
+        </div>
     </form>
       <button className='scannerButton' onClick={() =>{window.location.replace('./scanner')}}>📷</button>
     </div>
