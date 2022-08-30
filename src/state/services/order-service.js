@@ -4,10 +4,10 @@ export async function getItems() {
   const response = await client
   .from('Inventory')
   .select(`
-    inventoryId,
+    id,
     )
   `)
-  .order('inventoryId')
+  .order('id')
   return response;
 }
 
@@ -54,10 +54,10 @@ export async function addOrder(order) {
 export async function getIdOfItem(inventory) {
   const response = await client
     .from('Inventory')
-    .select('inventoryId')
+    .select('id')
     .match({'itemname': inventory})
     .single();
-  return response.body.inventoryId;
+  return response.body.id;
 }
 
 export async function removeOrder(id) {
