@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid';
-import { updateQuantity } from '../../state/services/inventory-service';
+import { updateQuantity, invSubscription } from '../../state/services/inventory-service';
 import { useItems } from '../../state/hooks/inventory';
 import { addTransaction } from '../../state/services/transaction-service';
 export default function Grid() {
@@ -21,7 +21,10 @@ export default function Grid() {
     { field: 'quantity', headerName: 'Quantity', width: 150, editable: true },
     { field: 'category_name', headerName: 'Category', width: 150 },
   ];
-  
+
+  React.useEffect(() => {
+    invSubscription(inventory)
+  },[inventory])
 
 return (
     <div style={{ height: 660, width: 'auto' }}>
