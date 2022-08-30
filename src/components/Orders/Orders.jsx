@@ -1,7 +1,15 @@
 import React from 'react'
+import OrderList from './OrderList.jsx'
+import AddOrder from './AddOrder.jsx'
 
-export default function Orders() {
+export default function Order() {
   return (
-    <div>Orders</div>
+    <div>
+    {/* <NavBar/>
+     <FolderBar />
+     <SearchBar /> */}
+    <AddOrder />
+    <OrderList />
+    </div>
   )
 }
