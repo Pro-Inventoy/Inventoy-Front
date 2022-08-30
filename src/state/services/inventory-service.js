@@ -1,5 +1,20 @@
 import client from './client.js';
 
+export async function invSubscription(){
+  const response = await client
+  .from('Inventory')
+  .on('INSERT', payload => {
+    console.log('insert')
+  })
+  .on('DELETE', payload=> {
+    console.log('delete')
+  })
+  .on('UPDATE', payload=> {
+    console.log('update')
+  })
+  .subscribe()
+  return response;
+}
 export async function getItems() {
   const response = await client
   .from('Inventory')
@@ -13,6 +28,7 @@ export async function getItems() {
     )
   `)
   .order('id')
+  
   return response;
 }
 
