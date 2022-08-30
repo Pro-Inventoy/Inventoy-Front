@@ -28,6 +28,7 @@ export default function AddInventory() {
   return (
     <div>
     <form className='inventoryAddForm' onSubmit={handleSubmit}>
+      <div className="formycontrolly">
       <InputControl
         type={'number'}
         label={'Quantity '}
@@ -46,6 +47,8 @@ export default function AddInventory() {
           </option>
         ))}
       </SelectControl>
+      </div>
+      <div className="formycontrolly">
       <InputControl
         type={'number'}
         label={'Cost '}
@@ -59,6 +62,8 @@ export default function AddInventory() {
         onChange={handleItemName}
       />
       <FormButton>Add</FormButton>
+      </div>
+      
     </form>
     </div>
   )
