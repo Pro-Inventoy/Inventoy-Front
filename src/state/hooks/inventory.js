@@ -10,7 +10,7 @@ import {
 
 export function useItems() {
   const [error, setError] = useState(null);
-  const [ items, setItems ] = useState(null);
+  const [ items, setItems ] = useState([]);
 
   useEffect(() => {
     let ignore = false;
@@ -31,7 +31,7 @@ export function useItems() {
     return () => (ignore = true);
   }, []);
 
-  return { items, error };
+  return items;
 }
 
 export function useCategories() {
