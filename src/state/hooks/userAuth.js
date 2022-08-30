@@ -14,7 +14,7 @@ import {
 
 export function useStatus() {
   const { user, profile } = useContext(UserStateContext);
-
+  console.log(user, 'in userauth js');
   return { user, profile };
 }
 

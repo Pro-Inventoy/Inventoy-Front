@@ -1,73 +1,68 @@
-import { Link, Route, Routes } from 'react-router-dom';
-import {
-  InputControl,
-  FormButton,
-} from '../Forms/FormControl.jsx';
-import { useForm } from '../../state/hooks/formData.js';
-import { useAuth } from '../../state/hooks/userAuth.js';
-import './Auth.css';
+import React, { useState } from 'react';
+import { signInUser, signupUser } from '../../state/services/supabase-utils';
 
-export default function Auth() {
-  const { signIn, signUp } = useAuth();
+export default function AuthPage({ setCurrentUser }) {
+
+  const [signUpEmail, setSignUpEmail] = useState('');
+  const [signUpPassword, setSignUpPassword] = useState('');  
+  const [signInEmail, setSignInEmail] = useState('');
+  const [signInPassword, setSignInPassword] = useState('');
+
+  function clearForms() {
+    setSignInEmail('');
+    setSignInPassword('');
+    setSignUpEmail('');
+    setSignUpPassword('');
+  }
+
   
-  const signUpInfo = {
-    header: 'Create new account',
-    button: 'Sign Up',
-    prompt: 'You got an account already?',
-    link: '../',
-    onSubmit: signUp,
-  };
-  
-  const signInInfo = {
-    header: 'Sign in account',
-    button: 'Sign In',
-    prompt: 'New Account?',
-    link: 'sign-up',
-    onSubmit: signIn,
-  };
-  return (
-    <Routes>
-      <Route index element={<AuthForm {...signInInfo} />} />
-      <Route path="sign-up" element={<AuthForm {...signUpInfo}/>} />
-    </Routes>
-  );
-  
-}
-
-
-function AuthForm({ header, button, prompt, link }){
-  const [credentials, handleChange] = useForm();
-
-  const handleSubmit = (e) => {
+  async function handleSignUp(e) {
     e.preventDefault();
-    onsubmit(credentials);
-  };
-  return (
-    <section className="Auth">
-      <form onSubmit={handleSubmit}>
-        <h1>{header}</h1>
 
-        <InputControl
-          label="Email"
-          name="email"
-          type="email"
-          required
-          placeholder="email"
-          value={credentials.email}
-          onChange={handleChange}
-        />
-        <InputControl
-          label="Password"
-          name="password"
-          type="password"
-          required
-          placeholder="password"
-          value={credentials.password}
-          onChange={handleChange}
-        />
-        <FormButton>{button}</FormButton>
-        <Link to={link}>{prompt}</Link>
-      </form>
-    </section>
+    const user = await signupUser(signUpEmail, signUpPassword);
+    setCurrentUser(user);
+    clearForms();
+  }
+
+  async function handleSignIn(e) {
+    e.preventDefault();
+
+    const user = await signInUser(signInEmail, signInPassword);
+    setCurrentUser(user);
+    clearForms();
+  }
+
+  return (
+    <div className="home-page">
+      <div className='login-form'>
+        <form className="form-input" onSubmit={handleSignUp}>
+          <h2>Sign Up</h2>
+          <label>
+            <p>Email</p>
+            <input value={signUpEmail} onChange={e => setSignUpEmail(e.target.value)} />
+          </label>
+          <label>
+            <p>Password</p>
+            <input value={signUpPassword} type='password' onChange={e => setSignUpPassword(e.target.value)} />
+          </label>
+          <button>Sign Up</button>
+        </form>
+      </div>
+      <div className='login-form'>
+        <form className="form-input" onSubmit={handleSignIn}>
+          <h2>Sign In</h2>
+          <label>
+            <p>Email</p>
+            <input value={signInEmail} onChange={e => setSignInEmail(e.target.value)} />
+          </label>
+          <label>
+            <p>Password</p>
+            <input value={signInPassword} type='password' onChange={e => setSignInPassword(e.target.value)} />
+          </label>
+          <button>Sign In</button>
+        </form>
+
+      </div>
+    </div>
   );
 }
