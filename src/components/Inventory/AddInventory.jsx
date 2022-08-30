@@ -37,7 +37,6 @@ export default function AddInventory() {
         onChange={handleQuantity}
       />
       </div>
-     
       <div>
       <SelectControl className="compstyle2"
             type={'string'}
