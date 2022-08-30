@@ -9,7 +9,6 @@ import Users from './Users/Users.jsx'
 import Profile from './Profile/Profile.jsx'
 import Layout from './Page/Layout.jsx'
 import Auth from './AuthPage/Auth.jsx'
-import Scanner from './Scanner/Scanner.jsx'
 import { UserProvider } from '../state/context/UserContext.jsx';
 import './App.css'
 export default function App() {
@@ -25,6 +24,7 @@ export default function App() {
       <UserProvider>
         <Router>
             <Routes>
+              {/* TODO needs to redirect on / */}
                 <Route path="user/*" element={<ProtectedRoutes />} />
                   <Route element={<Layout />}>
                       <Route element={<ProtectedRoutes />}>
@@ -33,7 +33,6 @@ export default function App() {
                         <Route path="orders" element={<Orders />} />
                         <Route path="users" element={<Users />} />
                         <Route path="profile" element={<Profile />} />
-                        <Route path="scanner" element={<Scanner />} />
                     </Route>
                 </Route>
                 <Route path='/auth' element={<Auth setCurrentUser={setCurrentUser}/>} />
