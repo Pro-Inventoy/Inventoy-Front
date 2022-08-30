@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from 'react';
 import { ItemContext } from '../context/inventoryContext.jsx';
 import {
@@ -6,6 +7,7 @@ import {
   updateItem,
   removeItem,
   getCategories,
+  invSubscription,
 } from '../services/inventory-service.js';
 
 export function useItems() {
@@ -24,9 +26,9 @@ export function useItems() {
       }
       if (data) {
         setItems(data);
+        invSubscription();
       }
     };
-
     fetch();
     return () => (ignore = true);
   }, []);

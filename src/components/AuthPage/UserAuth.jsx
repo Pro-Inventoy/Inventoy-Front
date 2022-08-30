@@ -5,7 +5,7 @@ import Profile from './Profile.jsx';
 
 export default function UserAuth() {
   const { user, profile } = useStatus();
-console.log(user, 'user');
+//console.log(user);
   return (
     <section className="UserAuth">
       { user ? <Profile /> : <Auth/>}

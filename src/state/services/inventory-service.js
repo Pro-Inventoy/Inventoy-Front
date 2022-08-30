@@ -1,5 +1,21 @@
 import client from './client.js';
+import { addTransaction } from './transaction-service.js';
 
+export async function invSubscription(){
+  const response = await client
+  .from('Inventory')
+  .on('INSERT', payload => {
+    console.log('insert')
+  })
+  .on('DELETE', payload=> {
+    console.log('delete')
+  })
+  .on('UPDATE', payload=> {
+    console.log('update')
+  })
+  .subscribe()
+  return response;
+}
 export async function getItems() {
   const response = await client
   .from('Inventory')
@@ -13,6 +29,7 @@ export async function getItems() {
     )
   `)
   .order('id')
+  
   return response;
 }
 
@@ -35,6 +52,8 @@ export async function addItem(item) {
     .from('Inventory')
     .insert(item)
     .single();
+    //TODO auth getuser
+  await addTransaction({user: 1, content: ' added ' + item.quantity + ' ' + item.itemname})
   return response;
 }
 
