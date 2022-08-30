@@ -1,3 +1,16 @@
 .inventoryAddForm {
-    position:absolute; top:110px;
+    background-color: rgb(159, 235, 175);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100px;
+    display: inline-flex;
+}
+
+.inputstylin {
+    align-items: baseline;
+    height: 500px;
+}
+
+.divstyle {
+    margin: 30px;
 }

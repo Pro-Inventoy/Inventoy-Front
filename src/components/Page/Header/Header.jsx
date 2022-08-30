@@ -15,14 +15,14 @@ const primary = [
 
 
 export default function Header() {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   return (
     <header className="Header">
       <div className="MenuContainer">
-        {width <= 700 ? <Hamburger /> : <></>}
+        {width * 1.3 <= height  ? <Hamburger /> : <></>}
       </div>
       <div className="NavigationContainer">
-        {width > 700 ? <Navigation navigation={primary} /> : <></> }
+        {width * 1.3 > height  ? <Navigation navigation={primary} /> : <></> }
       </div>
 
       <User />
