@@ -135,4 +135,4 @@ Scanner.propTypes = {
     locate: PropTypes.bool,
 };
 
-export default Scanner;
+export { Scanner };
