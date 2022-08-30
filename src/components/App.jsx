@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
 import { getUser } from '../state/services/supabase-utils';
 import ProtectedRoutes from './AuthPage/ProtectRoutes.jsx';
@@ -8,7 +8,6 @@ import Orders from './Orders/Orders.jsx'
 import Users from './Users/Users.jsx'
 import Profile from './Profile/Profile.jsx'
 import Layout from './Page/Layout.jsx'
-import UserAuth from './AuthPage/UserAuth.jsx'
 import Auth from './AuthPage/Auth.jsx'
 import Scanner from './Scanner/Scanner.jsx'
 import { UserProvider } from '../state/context/UserContext.jsx';
@@ -29,7 +28,7 @@ export default function App() {
                 <Route path="user/*" element={<ProtectedRoutes />} />
                   <Route element={<Layout />}>
                       <Route element={<ProtectedRoutes />}>
-                        <Route index element={<Homepage />} />
+                        <Route path="homepage" element={<Homepage />} />
                         <Route path="inventory" element={<Inventory />} />
                         <Route path="orders" element={<Orders />} />
                         <Route path="users" element={<Users />} />
@@ -37,7 +36,7 @@ export default function App() {
                         <Route path="scanner" element={<Scanner />} />
                     </Route>
                 </Route>
-                <Route path='/auth' element={<Auth setCurrentUser={setCurrentUser}/>}/>
+                <Route path='/auth' element={<Auth setCurrentUser={setCurrentUser}/>} />
             </Routes>
         </Router>
       </UserProvider>
