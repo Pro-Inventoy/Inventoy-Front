@@ -1,4 +1,5 @@
 import client from './client.js';
+import { addTransaction } from './transaction-service.js';
 
 export async function getItems() {
   const response = await client
@@ -35,6 +36,8 @@ export async function addItem(item) {
     .from('Inventory')
     .insert(item)
     .single();
+    //TODO auth getuser
+  await addTransaction({user: 1, content: ' added ' + item.quantity + ' ' + item.itemname})
   return response;
 }
 
