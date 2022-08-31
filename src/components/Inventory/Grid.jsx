@@ -1,9 +1,11 @@
-import * as React from 'react';
+import { React, useEffect, useRef } from 'react';
 import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid';
-import { updateQuantity } from '../../state/services/inventory-service';
+import { getNameOfCategory, updateQuantity } from '../../state/services/inventory-service';
 import { useItems } from '../../state/hooks/inventory';
 import { addTransaction } from '../../state/services/transaction-service';
 import { getUser } from '../../state/services/user-service';
+import client from '../../state/services/client';
+import { RealtimeClient } from '@supabase/supabase-js';
 export default function Grid() {
   const items = useItems();
   const inventory = items.map(item => ({
@@ -14,6 +16,25 @@ export default function Grid() {
       "category_name": item.Categories.category_name,
     }
   ))
+  const ref = useRef({
+    subscription: null
+});
+
+useEffect(() => {
+  if (!ref.current.subscription) {
+  const REALTIME_URL = process.env.REALTIME_URL || 'ws://localhost:3000/socket' 
+  const socket = new RealtimeClient(REALTIME_URL)
+  socket.connect()
+  ref.current.subscription = client
+    .from('Inventory')
+    .on("*", async (payload) => {
+      // it just doesn't go here at all! no idea why. subscription closes right as i start it.
+      //i WOULD make the table update with new info as the table changes.
+      // const userName = await (await getNameOfCategory(payload.new.categoryid)).data.category_name;
+    })
+    .subscribe((status,e)=>{console.log(status,e)})
+}
+}, []);
   
   const columns =  [
     { field: 'id', headerName: 'Item ID', width: 60 },

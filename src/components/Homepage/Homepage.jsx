@@ -9,15 +9,15 @@ export default function Homepage() {
   const { transactions } = useTransactions();
   // transactions is the 10 most recent transactions, most recent at [0]
   const ref = useRef({
-    subscription: null
+    inv_subscription: null
 });
 
 useEffect(() => {
-  if (!ref.current.subscription) {
+  if (!ref.current.inv_subscription) {
   const REALTIME_URL = process.env.REALTIME_URL || 'ws://localhost:3000/socket' 
   const socket = new RealtimeClient(REALTIME_URL)
   socket.connect()
-  ref.current.subscription = client
+  ref.current.inv_subscription = client
     .from('Transactions')
     .on("*", async (payload) => {
       const transListElement = document.getElementById('transactionList');
@@ -46,7 +46,7 @@ useEffect(() => {
         <ul id='transactionList'>
           {transactions.map(item => (
             <li key={item.id}>
-              <img className='trans-icon' alt='' src={item.icon}/>{item.empname.body.empname}{item.content}
+              <img className='trans-icon' alt='' src={item.icon}/>{item.empname}{item.content}
             </li>
           ))}
         </ul>
