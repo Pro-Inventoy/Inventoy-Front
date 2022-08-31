@@ -26,5 +26,5 @@ export function useUsers() {
     return () => (ignore = true);
   }, []);
 
-  return items;
+  return {items, error};
 }
