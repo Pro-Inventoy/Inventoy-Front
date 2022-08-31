@@ -4,8 +4,8 @@ export async function getTransactions() {
     const response = await client
     .from('Transactions')
     .select(`
+      icon,
       id,
-      user,
       user_id,
       content
       )
