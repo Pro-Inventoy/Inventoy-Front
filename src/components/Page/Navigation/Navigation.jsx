@@ -9,6 +9,7 @@ export default function Navigation() {
           <a id="Orders" className="menu-item" href="/orders">{handTruck}<br/>Orders</a>
           <a id="Users" className="menu-item" href="/users">{persons}<br/>Users</a>
           <a id="Profile" className="menu-item" href="/profile">{profile}<br/>Profile</a>
+          <h1 className="app-name">InvenToy</h1>
     </nav>
   );
 }

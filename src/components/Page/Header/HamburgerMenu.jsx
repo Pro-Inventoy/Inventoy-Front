@@ -14,6 +14,7 @@ class Hamburger extends React.Component {
     render () {
       // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
       return (
+        <div>
         <Menu>
           <a id="Home" className="menu-item" href="/">{home}<br/> Home </a>
           <a id="Inventory" className="menu-item" href="/inventory">{wareHouse}<br/>Inventory</a>
@@ -23,6 +24,9 @@ class Hamburger extends React.Component {
           {/* <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
           <a href="https://icons8.com/icon/FyZQG5LCUbyS/warehouse">Menu icons<br/> by Icons8</a>
         </Menu>
+        <h1 className="app-name-ham">InvenToy</h1>
+        </div>
+        
       );
     }
   }
