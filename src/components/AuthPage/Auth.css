@@ -1,8 +1,9 @@
 .Auth {
     display: grid;
     place-contect: center;
+    
 
-    padding-top: 30px;
+    
 
     form {
         background: var(--offset-color);
@@ -10,5 +11,17 @@
         width: 500px;
         display: grid;
         row-gap: 25px;
+        
     }
+}
+
+.login-form {
+    margin: 30px;
+        padding: 20px;
+        background-color: #b8e2be;
+        font-family: Arial, Helvetica, sans-serif;
+}
+
+.button {
+    margin-left: 10px;
 }

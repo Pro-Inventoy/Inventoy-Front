@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInUser, signupUser } from '../../state/services/supabase-utils';
 // import { Auth } from '@sup'
 import client from '../../state/services/client';
+import './Auth.css';
 export default function AuthPage({ setCurrentUser }) {
 
   const [signUpEmail, setSignUpEmail] = useState('');
@@ -40,9 +41,8 @@ export default function AuthPage({ setCurrentUser }) {
 
   return (
     <div className="home-page">
+      
       <div className='login-form'>
-        <button 
-          onClick={(() => handleOauth("google"))}>Sign in Google</button>
         <form className="form-input" onSubmit={handleSignUp}>
           <h2>Sign Up</h2>
           <label>
@@ -53,8 +53,12 @@ export default function AuthPage({ setCurrentUser }) {
             <p>Password</p>
             <input value={signUpPassword} type='password' onChange={e => setSignUpPassword(e.target.value)} />
           </label>
-          <button>Sign Up</button>
+          <button className="button">Sign Up</button>
         </form>
+      </div>
+      <div className='login-form'>
+      <button
+          onClick={(() => handleOauth("google"))}>Sign in Using Google</button>
       </div>
       <div className='login-form'>
         <form className="form-input" onSubmit={handleSignIn}>
@@ -67,10 +71,12 @@ export default function AuthPage({ setCurrentUser }) {
             <p>Password</p>
             <input value={signInPassword} type='password' onChange={e => setSignInPassword(e.target.value)} />
           </label>
-          <button>Sign In</button>
+          <button className="button">Sign In</button>
         </form>
+        
 
       </div>
+      
     </div>
   );
 }
