@@ -35,7 +35,6 @@ function clearForms() {
     const loggedInUser = await getUser();
 
       const userId = { ...loggedInUser };
-      console.log(userId.username);
       setIsLoading(true);
       const userRole = 3;
 
