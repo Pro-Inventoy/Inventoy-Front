@@ -1,8 +1,11 @@
-import * as React from 'react';
+import { React, useEffect, useRef } from 'react';
 import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid';
 import { removeOrder, updateOrder } from '../../state/services/order-service';
 import { addTransaction } from '../../state/services/transaction-service';
-import { getUser } from '../../state/services/user-service';
+import { getNameOfUser, getUser } from '../../state/services/user-service';
+import { RealtimeClient } from '@supabase/supabase-js';
+import client from '../../state/services/client';
+import { getNameOfItem } from '../../state/services/inventory-service';
 export default function Grid( {orders}) {
     const updatedOrders = orders.map(order => ({
         "id": order.id,
@@ -16,7 +19,42 @@ export default function Grid( {orders}) {
         "completevalue": order.completed,
       }
     ))
+    const ref = useRef({
+      subscription: null,
+      orders: updatedOrders,
+  });
   
+  useEffect(() => {
+    if (!ref.current.subscription) {
+    const REALTIME_URL = process.env.REALTIME_URL || 'ws://localhost:3000/socket' 
+    const socket = new RealtimeClient(REALTIME_URL)
+    socket.connect()
+    ref.current.subscription = client
+      .from('Orders')
+      .on("*", async (payload) => {
+        const remaining = payload.new.orderquantity - payload.new.completed;
+        const employee = await getNameOfUser(payload.new.user_id);
+        const itemname = await getNameOfItem(payload.new.productId);
+        const newItem = {
+          id: payload.new.id,
+          date:payload.new.date,
+          label:payload.new.label,
+          itemname: itemname,
+          orderquantity: payload.new.orderquantity,
+          remaining: remaining,
+          employee: employee,
+          completed: 0,
+          completevalue: payload.new.completed
+        }   
+        console.log('the new item', newItem);
+        ref.current.orders = [...orders, newItem]
+        console.log('the current orders', ref.current.orders);
+        // rerender please
+      })
+      .subscribe((status,e)=>{console.log(status,e)})
+  }
+  }, [orders, ref.current.orders]);
+    
   const columns =  [
     { field: 'id', headerName: 'Order ID', width: 60 },
     { field: 'date', headerName: 'Placed', width: 100 },
@@ -29,10 +67,10 @@ export default function Grid( {orders}) {
   ];
   
 return (
-    <div style={{ height: 700, width: 1300 }}>
+    <div style={{ height: 700, width: 'auto'}}>
     <DataGrid
         disableSelectionOnClick
-        rows={updatedOrders}
+        rows={ref.current.orders}
         columns={columns}
         components={{
         Toolbar: GridToolbar,

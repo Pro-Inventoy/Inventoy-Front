@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="Header">
       <div className="MenuContainer">
-        {width * 1.3 <= height  ? <Hamburger /> : <></>}
+        {width * 1.3 <= height  ? <Hamburger style="margin:0px; width: 450px;"/> : <></>}
       </div>
       <div className="NavigationContainer">
         {width * 1.3 > height  ? <Navigation navigation={primary} /> : <></> }
