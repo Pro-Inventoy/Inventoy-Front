@@ -30,7 +30,7 @@ export default function Grid( {orders}) {
   
 
 return (
-    <div style={{ height: 700, width: 1300 }}>
+    <div style={{ height: 700, width: 'auto' }}>
     <DataGrid
         disableSelectionOnClick
         rows={updatedOrders}

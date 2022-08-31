@@ -39,18 +39,18 @@
 }
 
 .compstyle {
-    margin: 10px;
+    /* margin: 10px; */
     /* padding: 10px; */
     width: 150px;
 }
 .compstyle2 {
-    margin: 10px;
+    /* margin: 10px; */
     width: 150px;
     /* padding: 10px; */
 }
 
 .compstyle3 {
-    margin: 10px;
+    margin: 0px;
     width: 150px;
     /* padding: 10px; */
 }
