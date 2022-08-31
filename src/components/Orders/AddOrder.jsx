@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useItems } from '../../state/hooks/inventory';
 import { useUsers } from '../../state/hooks/user';
+import { getIdOfUser } from '../../state/services/emp-service';
 import { addOrder, getIdOfItem } from '../../state/services/order-service';
 import { addTransaction } from '../../state/services/transaction-service';
 import { FormButton, InputControl, SelectControl } from '../Forms/FormControl';
@@ -17,16 +18,14 @@ export default function AddOrder() {
   const handleUser = ({ target }) => setUser(target.value);
   const handleLabel = ({ target }) => setLabel(target.value);
   const allItems = useItems();
-  const allUsers = useUsers();
+  const allUsers = useUsers().items;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO const computedUser = await getIdOfUser(employee);
-    const computedUser = 1;
+    const computedUser = await getIdOfUser(user);
     const computedItem = await getIdOfItem(item);
-    await addOrder({ label: label, orderquantity: quantity, productId: computedItem, userId: computedUser})
-    //TODO auth getuser
-    await addTransaction({user: 1, content:' ordered ' + quantity + ' ' + item});
+    await addOrder({ label: label, orderquantity: quantity, productId: computedItem, user_id: computedUser})
+    await addTransaction({icon: 'https://img.icons8.com/ios-filled/344/pallet.png', user_id: computedUser, content:' ordered ' + quantity + ' ' + item});
     setQuantity(0);
     setLabel(0);
     setItem('');

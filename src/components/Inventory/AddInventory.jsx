@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import client from '../../state/services/client.js'
 import { useCategories } from '../../state/hooks/inventory';
 import { addItem, getIdOfCategory } from '../../state/services/inventory-service';
 import { FormButton, InputControl, SelectControl } from '../Forms/FormControl';
@@ -24,7 +25,16 @@ export default function AddInventory() {
     setCategory('');
     setItemName('');
   };
-  
+  React.useEffect(() => {
+    const sub = client
+    .from('Inventory')
+    .on('UPDATE', payload => {
+      setItemName(...itemName)
+    })
+    .subscribe()
+    return () => client.removeSubscription(sub);
+  },[itemName])
+
   return (
     <div className="divwrapper">
     <form className='inventoryAddForm' onSubmit={handleSubmit}>

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid';
-import { updateQuantity, invSubscription } from '../../state/services/inventory-service';
+import { updateQuantity } from '../../state/services/inventory-service';
 import { useItems } from '../../state/hooks/inventory';
 import { addTransaction } from '../../state/services/transaction-service';
+import { getUser } from '../../state/services/user-service';
 export default function Grid() {
   const items = useItems();
   const inventory = items.map(item => ({
@@ -22,9 +23,6 @@ export default function Grid() {
     { field: 'category_name', headerName: 'Category', width: 150 },
   ];
 
-  React.useEffect(() => {
-    invSubscription(inventory)
-  },[inventory])
 
 return (
     <div style={{ height: 660, width: 'auto' }}>
@@ -40,8 +38,7 @@ return (
               event.defaultMuiPrevented = true;
             }
             await updateQuantity(event.target.value, Number(params.id))
-            //TODO auth getuser
-            await addTransaction({user: 1, content:' set ' + params.row.itemname + ' stock to ' + event.target.value})
+            await addTransaction({icon: 'https://img.icons8.com/ios-filled/344/shipping-center.png', user_id: getUser().id, content:' set ' + params.row.itemname + ' stock to ' + event.target.value})
           }}
     />
     </div>
