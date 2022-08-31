@@ -30,6 +30,7 @@ export default function App() {
                 <Route path="user/*" element={<ProtectedRoutes />} />
                   <Route element={<Layout />}>
                       <Route element={<ProtectedRoutes />}>
+                        <Route path="/" index element={<Homepage />} />
                         <Route path="homepage" element={<Homepage />} />
                         <Route path="inventory" element={<Inventory />} />
                         <Route path="orders" element={<Orders />} />
