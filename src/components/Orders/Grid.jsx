@@ -44,9 +44,9 @@ return (
             await updateOrder(event.target.value, Number(params.id))
             if (Number(event.target.value) === params.row.remaining) {
               await removeOrder(params.row.id);
-              await addTransaction({user_id: getUser().id, content:' finished order #' + params.row.id + ' of ' +params.row.itemname});
+              await addTransaction({icon: 'https://img.icons8.com/ios-filled/344/successful-delivery.png', user_id: getUser().id, content:' finished order #' + params.row.id + ' of ' +params.row.itemname});
             } else {
-              await addTransaction({user_id: getUser().id, content:' completed '+ event.target.value + ' items of ' + params.row.itemname});
+              await addTransaction({icon: 'https://img.icons8.com/ios-filled/344/holding-box.png', user_id: getUser().id, content:' completed '+ event.target.value + ' items of ' + params.row.itemname});
             }
           }}
     />

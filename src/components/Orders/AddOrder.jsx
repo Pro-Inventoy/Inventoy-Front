@@ -25,7 +25,7 @@ export default function AddOrder() {
     const computedUser = await getIdOfUser(user);
     const computedItem = await getIdOfItem(item);
     await addOrder({ label: label, orderquantity: quantity, productId: computedItem, user_id: computedUser})
-    await addTransaction({user_id: computedUser, content:' ordered ' + quantity + ' ' + item});
+    await addTransaction({icon: 'https://img.icons8.com/ios-filled/344/pallet.png', user_id: computedUser, content:' ordered ' + quantity + ' ' + item});
     setQuantity(0);
     setLabel(0);
     setItem('');

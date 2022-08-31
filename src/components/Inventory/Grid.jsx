@@ -38,7 +38,7 @@ return (
               event.defaultMuiPrevented = true;
             }
             await updateQuantity(event.target.value, Number(params.id))
-            await addTransaction({user_id: getUser().id, content:' set ' + params.row.itemname + ' stock to ' + event.target.value})
+            await addTransaction({icon: 'https://img.icons8.com/ios-filled/344/shipping-center.png', user_id: getUser().id, content:' set ' + params.row.itemname + ' stock to ' + event.target.value})
           }}
     />
     </div>

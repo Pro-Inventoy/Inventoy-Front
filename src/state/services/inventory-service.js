@@ -54,7 +54,7 @@ export async function addItem(item) {
     .from('Inventory')
     .insert(item)
     .single();
-  await addTransaction({user_id: getUser().id, content: ' added ' + item.quantity + ' ' + item.itemname})
+  await addTransaction({icon: 'https://img.icons8.com/ios-filled/344/drop-shipping.png', user_id: getUser().id, content: ' added ' + item.quantity + ' ' + item.itemname})
   return response;
 }
 

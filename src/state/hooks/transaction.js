@@ -31,5 +31,5 @@ export function useTransactions() {
     fetch();
     return () => (ignore = true);
   }, []);
-  return { transactions, error };
+  return { transactions, error, setTransactions };
 }
