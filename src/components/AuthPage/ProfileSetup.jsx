@@ -6,10 +6,12 @@ import { FormButton, InputControl } from '../Forms/FormControl.jsx';
 import './Profile.css';
 
 export default function ProfileSetup() {
-  const [, updateProfile] = useProfile();
+    const [, updateProfile] = useProfile();
+    const [username, setUsername] = useState('');
 //   const [profile, handleChange] = useForm();
 //   const [preview, setPreview] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
 
 //   const handlePreview = (e) => {
 //     const target = e.target;
@@ -22,21 +24,35 @@ export default function ProfileSetup() {
 //       },
 //     });
 //   };
+function clearForms() {
+    setUsername('');
+  }
 
 
-const [username, setUsername] = useState('');
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     const loggedInUser = await getUser();
 
-      const userId = loggedInUser.id;
+      const userId = { ...loggedInUser };
+      console.log(userId.username);
       setIsLoading(true);
+      const userRole = 3;
 
-      await updateProfile({empname: username});
-      await updateProfile(userId.username);
+      await updateProfile({empname: username, role: userRole});
+      await updateProfile(userId);
+      
+      clearForms();
       setIsLoading(false);
+    return (window.location.href = '/homepage')
   };
+
+//   async function handleEmpSetup(e) {
+//     e.preventDefault();
+
+//     clearForms();
+//     return (window.location.href = '/homepage')
+//   }
 
   return (
     <section className="Profile">
@@ -52,7 +68,7 @@ const [username, setUsername] = useState('');
           onChange={handleChange}
         /> */}
 
-        <input value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input value={username} onChange={(e) => setUsername(e.target.value)}/>
 
         {/* <InputControl
           className="Avatar"
@@ -64,7 +80,7 @@ const [username, setUsername] = useState('');
           {preview && <img src={preview} alt="avatar preview"/>}
         </InputControl> */}
 
-        <FormButton >Update</FormButton>
+        <FormButton>Update</FormButton>
       </form>
     </section>
   );
