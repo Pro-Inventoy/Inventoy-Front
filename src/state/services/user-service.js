@@ -10,7 +10,7 @@ export async function getNameOfUser(user_id) {
     .select('empname')
     .eq('id', user_id)
     .single();
-  return response;
+  return response.body.empname;
 }
 
 export async function signUp(credentials) {

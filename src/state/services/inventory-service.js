@@ -58,6 +58,15 @@ export async function addItem(item) {
   return response;
 }
 
+export async function getNameOfItem(id) {
+  const response = await client
+    .from('Inventory')
+    .select('itemname')
+    .match({'id': id})
+    .single();
+  return response.body.itemname;
+}
+
 export async function getIdOfCategory(category) {
   const response = await client
     .from('Categories')
@@ -65,6 +74,15 @@ export async function getIdOfCategory(category) {
     .match({'category_name': category})
     .single();
   return response.body.categoryid;
+}
+
+export async function getNameOfCategory(id) {
+  const response = await client
+    .from('Categories')
+    .select('category_name')
+    .match({'category_id': id})
+    .single();
+  return response.body.category_name;
 }
 
 export async function updateItem(newName, item) {
