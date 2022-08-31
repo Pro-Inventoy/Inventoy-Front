@@ -2,8 +2,8 @@ import client from './client.js';
 import { addTransaction } from './transaction-service.js';
 import { getUser } from './user-service.js';
 
-export async function invSubscription(){
-  const response = await client
+export function invSubscription(){
+  const response =  client
   .from('Inventory')
   .on('INSERT', payload => {
     console.log('insert')
@@ -15,6 +15,7 @@ export async function invSubscription(){
     console.log('update')
   })
   .subscribe()
+  
   return response;
 }
 export async function getItems() {
