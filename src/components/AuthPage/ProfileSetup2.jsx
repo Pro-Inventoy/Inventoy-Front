@@ -4,7 +4,7 @@ import { useForm } from '../../state/hooks/formData.js';
 import { FormButton, InputControl } from '../Forms/FormControl.jsx';
 import './Profile.css';
 
-export default function Profile() {
+export default function ProfileSetup() {
   const [, updateProfile] = useProfile();
   const [profile, handleChange] = useForm();
   const [preview, setPreview] = useState();
@@ -13,30 +13,30 @@ export default function Profile() {
     const target = e.target;
     const [file] = target.files;
     setPreview(URL.createObjectURL(file));
-    handleChange({
-      target: {
-        name: target.name,
-        value: file,
-      },
-    });
+    // handleChange({
+    //   target: {
+    //     name: target.name,
+    //     value: file,
+    //   },
+    // });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateProfile(profile);
+   await updateProfile(profile);
   };
 
   return (
     <section className="Profile">
       <form onSubmit={handleSubmit}>
-        <h1>User Profile</h1>
+        <h1>Employee Profile Setup</h1>
 
         <InputControl
-          label="User Name"
-          name="username"
+          label="Employee Name"
+          name="employeename"
           required
-          placeholder="enter user name"
-          value={profile.username}
+          placeholder="enter employee name"
+          value={profile.employeename}
           onChange={handleChange}
         />
 
@@ -50,7 +50,7 @@ export default function Profile() {
           {preview && <img src={preview} alt="avatar preview"/>}
         </InputControl>
 
-        <FormButton>Update</FormButton>
+        <FormButton >Update</FormButton>
       </form>
     </section>
   );

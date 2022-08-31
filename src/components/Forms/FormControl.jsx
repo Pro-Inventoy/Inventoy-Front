@@ -1,5 +1,6 @@
 import { Children, cloneElement, forwardRef } from 'react';
 import './FormControls.css';
+export { default as Form } from './Form.jsx';
 
 function FormControl({
   label,

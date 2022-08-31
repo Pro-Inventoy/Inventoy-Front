@@ -53,7 +53,7 @@ export async function getProfile() {
   const user = getUser();
 
   return await client
-    .from('Profiles')
+    .from('Users')
     .select()
     .eq('id', user.id)
     .single();
@@ -61,27 +61,24 @@ export async function getProfile() {
 
 export async function upsertProfile(profile) {
   const response = await client
-    .from('Profiles')
+    .from('Users')
     .upsert(profile)
     .eq('id', profile.id)
     .single();
   return response;
 }
 
+
 const BUCKET_NAME = 'avatars';
 
 export async function uploadAvatar(userId, imageFile) {
-  // put into a folder...
-  const imageName = `${userId}/${imageFile.name}`;
+  
+  const imageName = `${userId}/${imageFile?.name}`;
 
-  // we can use the storage bucket to upload the image,
-  // then use it to get the public URL
   const bucket = client.storage.from(BUCKET_NAME);
 
   const { data, error } = await bucket.upload(imageName, imageFile, {
     cacheControl: '3600',
-    // in this case, we will _replace_ any
-    // existing file with same name.
     upsert: true,
   });
 

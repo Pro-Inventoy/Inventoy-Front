@@ -26,7 +26,7 @@ export default function AuthPage({ setCurrentUser }) {
     const user = await signupUser(signUpEmail, signUpPassword);
     setCurrentUser(user);
     clearForms();
-    return (window.location.href = '/homepage')
+    return (window.location.href = '/create-profile')
   }
 
   async function handleSignIn(e) {
