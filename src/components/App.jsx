@@ -11,7 +11,9 @@ import Layout from './Page/Layout.jsx'
 import Auth from './AuthPage/Auth.jsx'
 import { UserProvider } from '../state/context/UserContext.jsx';
 import './App.css'
+
 export default function App() {
+  // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {

@@ -1,11 +1,12 @@
 .Header {
     bakground-color: black;
-    height:400px;
+    /* height:50px; */
     z-index: 1000;
     position: sticky;
     top: 0;
     padding-right: var(--padding);
-    height: var(--header-height);
+    /* height: var(--header-height); */
+    width: 100%;
   
     background: light-green;
     color: var(--white-color);

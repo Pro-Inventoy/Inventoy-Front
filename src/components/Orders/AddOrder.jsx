@@ -6,6 +6,7 @@ import { addOrder, getIdOfItem } from '../../state/services/order-service';
 import { addTransaction } from '../../state/services/transaction-service';
 import { FormButton, InputControl, SelectControl } from '../Forms/FormControl';
 import './AddOrder.css';
+import './AddInventory.css'
 
 export default function AddOrder() {
   const [quantity, setQuantity] = useState(0);
@@ -31,15 +32,19 @@ export default function AddOrder() {
   };
 
   return (
-    <div>
-    <form className='orderAddForm' onSubmit={handleSubmit}>
-      <InputControl
+    <div className="divwrapper">
+    <form className='inventoryAddForm' onSubmit={handleSubmit}>
+      <div className="divwrap">
+      <div>
+      <InputControl className="compstyle"
         type={'number'}
-        label={'quantity'}
+        label={'Quantity'}
         value={quantity}
         onChange={handleQuantity}
       />
-      <SelectControl
+      </div>
+      <div>
+      <SelectControl className="compstyle"
             type={'string'}
             label={'Item'}
             value={item}
@@ -51,7 +56,12 @@ export default function AddOrder() {
           </option>
         ))}
       </SelectControl>
-      <SelectControl
+      </div>
+      </div>
+
+      <div className="divwrap">
+        <div>
+      <SelectControl className="compstyle"
             type={'string'}
             label={'User'}
             value={user}
@@ -63,13 +73,19 @@ export default function AddOrder() {
           </option>
         ))}
       </SelectControl>
-      <InputControl
+      </div>
+      <div>
+      <InputControl className="compstyle"
         type={'string'}
-        label={'label'}
+        label={'Label'}
         value={label}
         onChange={handleLabel}
       />
-      <FormButton>Add</FormButton>
+      </div>
+      </div>
+      <div>
+      <FormButton className="addbutton">Add<br/>Order</FormButton>
+      </div>
     </form>
     </div>
   )
