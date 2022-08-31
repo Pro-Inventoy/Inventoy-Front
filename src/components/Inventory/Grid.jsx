@@ -3,6 +3,7 @@ import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid
 import { updateQuantity } from '../../state/services/inventory-service';
 import { useItems } from '../../state/hooks/inventory';
 import { addTransaction } from '../../state/services/transaction-service';
+import { getUser } from '../../state/services/user-service';
 export default function Grid() {
   const items = useItems();
   const inventory = items.map(item => ({
@@ -37,8 +38,7 @@ return (
               event.defaultMuiPrevented = true;
             }
             await updateQuantity(event.target.value, Number(params.id))
-            //TODO auth getuser
-            await addTransaction({user: 1, content:' set ' + params.row.itemname + ' stock to ' + event.target.value})
+            await addTransaction({user_id: getUser().id, content:' set ' + params.row.itemname + ' stock to ' + event.target.value})
           }}
     />
     </div>
