@@ -1,5 +1,6 @@
 import client from './client.js';
 import { addTransaction } from './transaction-service.js';
+import { getUser } from './user-service.js';
 
 export async function invSubscription(){
   const response = await client
@@ -52,8 +53,7 @@ export async function addItem(item) {
     .from('Inventory')
     .insert(item)
     .single();
-    //TODO auth getuser
-  await addTransaction({user: 1, content: ' added ' + item.quantity + ' ' + item.itemname})
+  await addTransaction({user_id: getUser().id, content: ' added ' + item.quantity + ' ' + item.itemname})
   return response;
 }
 

@@ -26,6 +26,7 @@ export default function App() {
       <UserProvider>
         <Router>
             <Routes>
+              {/* TODO needs to redirect on / */}
                 <Route path="user/*" element={<ProtectedRoutes />} />
                   <Route element={<Layout />}>
                       <Route element={<ProtectedRoutes />}>

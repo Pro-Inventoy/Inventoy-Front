@@ -6,6 +6,7 @@ export async function getTransactions() {
     .select(`
       id,
       user,
+      user_id,
       content
       )
     `)

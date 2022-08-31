@@ -1,8 +1,17 @@
 import { client } from './supabase-client.js';
 
 export function getUser() {
-    console.log('gettinuser')
+    console.log('gettinuser', client.auth.user())
   return client.auth.user();
+}
+
+export async function getNameOfUser(user_id) {
+  const response = await client
+    .from('Users')
+    .select('empname')
+    .eq('id', user_id)
+    .single();
+  return response;
 }
 
 export async function signUp(credentials) {
@@ -45,7 +54,7 @@ export async function getProfile() {
   const user = getUser();
 
   return await client
-    .from('profiles')
+    .from('Profiles')
     .select()
     .eq('id', user.id)
     .single();
@@ -53,7 +62,7 @@ export async function getProfile() {
 
 export async function upsertProfile(profile) {
   const response = await client
-    .from('profiles')
+    .from('Profiles')
     .upsert(profile)
     .eq('id', profile.id)
     .single();
