@@ -6,6 +6,7 @@
   }
 
   .currentpage {
-    position:absolute; top:75px;
-    width: auto;
+    position:absolute;
+    top:70px;
+    width: 100%;
   }

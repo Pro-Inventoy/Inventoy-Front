@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid';
 import { removeOrder, updateOrder } from '../../state/services/order-service';
 import { addTransaction } from '../../state/services/transaction-service';
+import { getUser } from '../../state/services/user-service';
 export default function Grid( {orders}) {
     const updatedOrders = orders.map(order => ({
         "id": order.id,
@@ -27,8 +28,6 @@ export default function Grid( {orders}) {
     { field: 'employee', headerName: 'Employee', width: 150 },
   ];
   
-  
-
 return (
     <div style={{ height: 700, width: 1300 }}>
     <DataGrid
@@ -45,11 +44,9 @@ return (
             await updateOrder(event.target.value, Number(params.id))
             if (Number(event.target.value) === params.row.remaining) {
               await removeOrder(params.row.id);
-              //TODO add auth getuser
-              await addTransaction({user: 1, content:' finished order #' + params.row.id + ' of ' +params.row.itemname});
+              await addTransaction({user_id: getUser().id, content:' finished order #' + params.row.id + ' of ' +params.row.itemname});
             } else {
-              //TODO add auth getuser
-              await addTransaction({user: 1, content:' completed '+ event.target.value + ' items of ' + params.row.itemname});
+              await addTransaction({user_id: getUser().id, content:' completed '+ event.target.value + ' items of ' + params.row.itemname});
             }
           }}
     />
