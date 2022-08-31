@@ -7,6 +7,7 @@ import Inventory from './Inventory/Inventory.jsx'
 import Orders from './Orders/Orders.jsx'
 import Users from './Users/Users.jsx'
 import Profile from './Profile/Profile.jsx'
+import ProfileSetup from './AuthPage/ProfileSetup.jsx'
 import Layout from './Page/Layout.jsx'
 import Auth from './AuthPage/Auth.jsx'
 import { UserProvider } from '../state/context/UserContext.jsx';
@@ -34,6 +35,7 @@ export default function App() {
                         <Route path="orders" element={<Orders />} />
                         <Route path="users" element={<Users />} />
                         <Route path="profile" element={<Profile />} />
+                        <Route path="create-profile" element={<ProfileSetup />} />
                     </Route>
                 </Route>
                 <Route path='/auth' element={<Auth setCurrentUser={setCurrentUser}/>} />

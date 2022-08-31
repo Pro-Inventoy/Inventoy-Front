@@ -35,8 +35,8 @@ export default function Profile() {
           label="User Name"
           name="username"
           required
-          placeholder="enter user name"
-          value={profile.username}
+          placeholder="enter employee name"
+          value={profile.employeename}
           onChange={handleChange}
         />
 

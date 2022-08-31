@@ -60,20 +60,17 @@ export async function upsertProfile(profile) {
   return response;
 }
 
+
 const BUCKET_NAME = 'avatars';
 
 export async function uploadAvatar(userId, imageFile) {
-  // put into a folder...
+  
   const imageName = `${userId}/${imageFile.name}`;
 
-  // we can use the storage bucket to upload the image,
-  // then use it to get the public URL
   const bucket = client.storage.from(BUCKET_NAME);
 
   const { data, error } = await bucket.upload(imageName, imageFile, {
     cacheControl: '3600',
-    // in this case, we will _replace_ any
-    // existing file with same name.
     upsert: true,
   });
 
