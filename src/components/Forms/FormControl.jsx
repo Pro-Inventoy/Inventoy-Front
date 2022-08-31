@@ -7,7 +7,7 @@ function FormControl({
 }) {
 
   return (
-    <label className="formycontrolly">
+    <label>
       <LabelText text={label} />
       {children}
     </label>
@@ -22,10 +22,12 @@ function LabelText({ text, as: Tag = 'span' }) {
 
 function Option({ text, type, ...rest }) {
   return (
+    <div>
     <label>
       <input type={type} {...rest} />
       {text}
     </label>
+    </div>
   );
 }
 
@@ -83,7 +85,7 @@ export const InputControl = forwardRef((props, ref) => {
   const { label, ...rest } = props;
   verifyValue(rest); 
   return (
-    <FormControl className="formycontrolly" label={label}>
+    <FormControl label={label}>
       <input ref={ref} {...rest} />
     </FormControl>
   );
