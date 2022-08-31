@@ -1,8 +1,16 @@
 import { client } from './supabase-client.js';
 
 export function getUser() {
-    console.log('gettinuser')
   return client.auth.user();
+}
+
+export async function getNameOfUser(user_id) {
+  const response = await client
+    .from('Users')
+    .select('empname')
+    .eq('id', user_id)
+    .single();
+  return response;
 }
 
 export async function signUp(credentials) {

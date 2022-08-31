@@ -19,3 +19,14 @@ export async function addEmployee(employee) {
     .single();
   return response;
 }
+
+export async function getIdOfUser(employee) {
+  const response = await client
+    .from ('Users')
+    .select(`
+      id
+    `)
+    .eq('empname', employee)
+    .single()
+  return response.data.id;
+}

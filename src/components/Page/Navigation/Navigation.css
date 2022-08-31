@@ -5,7 +5,7 @@
     align-items: flex-start;
     flex-direction: row;
     justify-content: center;
-    background-color: #81A684;
+    /* background-color: #81A684; */
     height: 70px;
     max-width: max-content;
     /* @media (min-width: 700px) {
