@@ -1,15 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// import BarcodeDetector from 'https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API'
 
-const Result = ({ result }) => (
-    <li>
-       { console.log('Im resulting here')}
-        {result.codeResult.code} [{result.codeResult.format}]
-    </li>
-);
-
-Result.propTypes = {
-    result: PropTypes.object
-};
-
-export default Result;
+// export function useResults(result){
+//     BarcodeDetector.detect(result)
+// }

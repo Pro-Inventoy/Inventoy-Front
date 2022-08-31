@@ -1,5 +1,5 @@
 import React from 'react';
-import Inventory from '../Inventory/Inventory.jsx'
+import App from '../App'
 import {createRoot} from 'react-dom/client';
 
 it('renders correctly', async() => {
@@ -7,6 +7,6 @@ it('renders correctly', async() => {
     const root = createRoot(div)
     root.render(
 <div>
-    <Inventory/>
+    <App/>
 </div>)
 })
