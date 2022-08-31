@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useProfile } from '../../state/hooks/userAuth.js';
-import { useForm } from '../../state/hooks/formData.js';
+//import { useForm } from '../../state/hooks/formData.js';
+import { getUser } from '../../state/services/supabase-utils';
 import { FormButton, InputControl } from '../Forms/FormControl.jsx';
 import './Profile.css';
 
 export default function ProfileSetup() {
   const [, updateProfile] = useProfile();
-  const [profile, handleChange] = useForm();
-  //const [preview, setPreview] = useState();
+//   const [profile, handleChange] = useForm();
+//   const [preview, setPreview] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
 //   const handlePreview = (e) => {
 //     const target = e.target;
@@ -20,11 +22,20 @@ export default function ProfileSetup() {
 //       },
 //     });
 //   };
+
+
 const [username, setUsername] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   await updateProfile({empname: username});
+    const loggedInUser = await getUser();
+
+      const userId = loggedInUser.id;
+      setIsLoading(true);
+
+      await updateProfile({empname: username});
+      await updateProfile(userId.username);
+      setIsLoading(false);
   };
 
   return (
