@@ -23,9 +23,6 @@ export default function Grid() {
     { field: 'category_name', headerName: 'Category', width: 150 },
   ];
 
-  React.useEffect(() => {
-    invSubscription(inventory)
-  },[inventory])
 
 return (
     <div style={{ height: 660, width: 'auto' }}>
