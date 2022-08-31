@@ -3,24 +3,32 @@ import { RealtimeClient } from '@supabase/realtime-js'
 import { useTransactions } from '../../state/hooks/transaction'
 import './Homepage.css'
 import client from '../../state/services/client';
+import { getNameOfUser, getUser } from '../../state/services/user-service';
 
 export default function Homepage() {
-  const { transactions, setTransactions } = useTransactions();
-  // const transactions = useTransactions().transactions;
+  const { transactions } = useTransactions();
   // transactions is the 10 most recent transactions, most recent at [0]
   let subscription = null;
 
   function transactionSubscribe() {
     if (!subscription) {
-      console.log('hello console its me your boy');
       const REALTIME_URL = process.env.REALTIME_URL || 'ws://localhost:3000/socket' 
       const socket = new RealtimeClient(REALTIME_URL)
       socket.connect()
       subscription = client
         .from('Transactions')
-        .on("*", (payload) => {
-          console.log(payload);
-          // setTransactions([...transactions, payload.new]);
+        .on("*", async (payload) => {
+          const transListElement = document.getElementById('transactionList');
+          const newTransactionListItem = document.createElement('li');
+          const newTransactionListImage = document.createElement('img');
+          newTransactionListImage.src = payload.new.icon;
+          newTransactionListImage.alt = '';
+          newTransactionListImage.classList = 'trans-icon';
+          const userName = await (await getNameOfUser(getUser().id)).data.empname;
+          const newTransactionList = document.createTextNode(userName + payload.new.content)
+          newTransactionListItem.appendChild(newTransactionListImage);
+          newTransactionListItem.appendChild(newTransactionList);
+          transListElement.insertBefore(newTransactionListItem, transListElement.firstChild);
         })
         .subscribe((status,e)=>{console.log(status,e)})
     }
