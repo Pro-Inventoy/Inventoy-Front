@@ -48,15 +48,11 @@ export function useProfile() {
   const { user, profile } = useContext(UserStateContext);
   const { setProfile } = useContext(UserActionContext);
 
-  const updateProfile = async ({ avatar, ...profile }) => {
-    const { url, error } = await uploadAvatar(user.id, avatar);
-    if (error) {
-      console.log(error.message);
-    }
-    if (url) {
+  const updateProfile = async ({ ...profile }) => {
+   
       const { data, error } = await upsertProfile({
         ...profile,
-        avatar: url,
+       
       });
 
       if (error) {
@@ -66,7 +62,26 @@ export function useProfile() {
         setProfile(data);
         console.log(`Profile updated for "${data.username}"`);
       }
-    }
+      
+    // }
+    // const { url, error } = await uploadAvatar(user.id, avatar);
+    // if (error) {
+    //   console.log(error.message);
+    // }
+    // if (url) {
+    //   const { data, error } = await upsertProfile({
+    //     ...profile,
+    //     avatar: url,
+    //   });
+
+    //   if (error) {
+    //     console.log(error.message);
+    //   }
+    //   if (data) {
+    //     setProfile(data);
+    //     console.log(`Profile updated for "${data.username}"`);
+    //   }
+    // }
   };
 
   return [profile, updateProfile];

@@ -7,24 +7,23 @@ import './Profile.css';
 export default function ProfileSetup() {
   const [, updateProfile] = useProfile();
   const [profile, handleChange] = useForm();
-  //const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState();
 
-//   const handlePreview = (e) => {
-//     const target = e.target;
-//     const [file] = target.files;
-//     setPreview(URL.createObjectURL(file));
-//     handleChange({
-//       target: {
-//         name: target.name,
-//         value: file,
-//       },
-//     });
-//   };
-const [username, setUsername] = useState('');
+  const handlePreview = (e) => {
+    const target = e.target;
+    const [file] = target.files;
+    setPreview(URL.createObjectURL(file));
+    // handleChange({
+    //   target: {
+    //     name: target.name,
+    //     value: file,
+    //   },
+    // });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   await updateProfile({empname: username});
+   await updateProfile(profile);
   };
 
   return (
@@ -32,18 +31,16 @@ const [username, setUsername] = useState('');
       <form onSubmit={handleSubmit}>
         <h1>Employee Profile Setup</h1>
 
-        {/* <InputControl
+        <InputControl
           label="Employee Name"
-          name="empname"
+          name="employeename"
           required
           placeholder="enter employee name"
-        //   value={profile.empname}
+          value={profile.employeename}
           onChange={handleChange}
-        /> */}
+        />
 
-        <input value={username} onChange={(e) => setUsername(e.target.value)} />
-
-        {/* <InputControl
+        <InputControl
           className="Avatar"
           label="Avatar"
           name="avatar"
@@ -51,7 +48,7 @@ const [username, setUsername] = useState('');
           type="file"
           onChange={handlePreview}>
           {preview && <img src={preview} alt="avatar preview"/>}
-        </InputControl> */}
+        </InputControl>
 
         <FormButton >Update</FormButton>
       </form>

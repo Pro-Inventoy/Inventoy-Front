@@ -4,6 +4,7 @@ export function useForm(){
   const [data, setData] = useState({});
 
   const handleChange = ({ target }) => {
+    console.log(target);
     setData({
       ...data,
       [target.name]: getValue(target),

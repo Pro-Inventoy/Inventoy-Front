@@ -45,7 +45,7 @@ export async function getProfile() {
   const user = getUser();
 
   return await client
-    .from('profiles')
+    .from('Users')
     .select()
     .eq('id', user.id)
     .single();
@@ -53,7 +53,7 @@ export async function getProfile() {
 
 export async function upsertProfile(profile) {
   const response = await client
-    .from('profiles')
+    .from('Users')
     .upsert(profile)
     .eq('id', profile.id)
     .single();
@@ -65,7 +65,7 @@ const BUCKET_NAME = 'avatars';
 
 export async function uploadAvatar(userId, imageFile) {
   
-  const imageName = `${userId}/${imageFile.name}`;
+  const imageName = `${userId}/${imageFile?.name}`;
 
   const bucket = client.storage.from(BUCKET_NAME);
 
