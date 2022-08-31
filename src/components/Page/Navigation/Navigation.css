@@ -40,3 +40,15 @@
     color: rgb(0, 0, 0);
   }
   
+  .app-name {
+    font-family: cursive ;
+    color: aliceblue;
+    font-size: 40px;
+  }
+
+  .app-name-ham {
+    font-family: cursive ;
+    color: aliceblue;
+    font-size: 30px;
+    padding-left: 110px;
+  }

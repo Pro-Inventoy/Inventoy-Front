@@ -96,7 +96,7 @@ export default function AddInventory() {
         <FormButton className="addbutton">Add<br/>Item</FormButton>
         </div>
     </form>
-      <button className='scannerButton' onClick={() =>{window.location.replace('./scanner')}}>📷</button>
+      {/* <button className='scannerButton' onClick={() =>{window.location.replace('./scanner')}}>📷</button> */}
     </div>
   )
 }
