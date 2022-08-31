@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid, GridToolbar, GridCellEditStopReasons } from '@mui/x-data-grid';
-import { updateQuantity, invSubscription } from '../../state/services/inventory-service';
+import { updateQuantity } from '../../state/services/inventory-service';
 import { useItems } from '../../state/hooks/inventory';
 import { addTransaction } from '../../state/services/transaction-service';
 import { getUser } from '../../state/services/user-service';
