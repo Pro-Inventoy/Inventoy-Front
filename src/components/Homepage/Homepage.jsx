@@ -68,25 +68,29 @@ useEffect(() => {
 }, []);
 
   return (
-    <div>
+    <div className="overdiv">
     <span>
       <h2 className="list-title">Recent Activity</h2>
       <div className="list-container">
         <div></div>
         <ul id='transactionList'>
           {transactions.map(item => (
-            <li key={item.id}>
-              <img className='trans-icon' alt='' src={item.icon}/>{item.empname}{item.content}
+            <li key={item.id} className="list-item">
+              <img className='trans-icon' alt='' src={item.icon}/> {item.empname}{item.content}
             </li>
           ))}
         </ul>
       </div>
+      <div className="pie-size">
       <Pie data={data} />
-      <p>Icons by https://icons8.com</p>
+      </div>
+      
+      
       
     </span>
-    <></>
     
+    <></>
+    <p>Icons by https://icons8.com</p>
     </div>
   )
 }
