@@ -30,12 +30,15 @@
 .divwrap {
     /* margin: 10px; */
     flex-direction: column;
+    display: flex;
+    align-items: flex-end;
     
 }
 
 .divwrapper {
     /* display: inline-block;
     vertical-align: top; */
+    
 }
 
 .compstyle {
