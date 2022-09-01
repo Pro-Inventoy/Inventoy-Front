@@ -14,7 +14,6 @@ import {
 
 export function useStatus() {
   const { user, profile } = useContext(UserStateContext);
-  // console.log(user, 'in userauth js');
   return { user, profile };
 }
 
@@ -45,10 +44,10 @@ export function useAuth() {
 }
 
 export function useProfile() {
-  const { user, profile } = useContext(UserStateContext);
+  const { profile } = useContext(UserStateContext);
   const { setProfile } = useContext(UserActionContext);
 
-  const updateProfile = async ({ ...profile }) => {
+  const updateProfile = async (profile) => {
     console.log(profile, 'profile update1');
       const { data, error } = await upsertProfile({
         ...profile,
@@ -64,26 +63,6 @@ export function useProfile() {
         setProfile(data);
         console.log(`Profile updated for "${data.empname}"`);
       }
-      
-    // }
-    // const { url, error } = await uploadAvatar(user.id, avatar);
-    // if (error) {
-    //   console.log(error.message);
-    // }
-    // if (url) {
-    //   const { data, error } = await upsertProfile({
-    //     ...profile,
-    //     avatar: url,
-    //   });
-
-    //   if (error) {
-    //     console.log(error.message);
-    //   }
-    //   if (data) {
-    //     setProfile(data);
-    //     console.log(`Profile updated for "${data.empname}"`);
-    //   }
-    // }
   };
 
   return [profile, updateProfile];

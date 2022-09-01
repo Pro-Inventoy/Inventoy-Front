@@ -49,12 +49,23 @@ export async function getOrdersOfUser(user_id) {
 }
 
 
-// export async function getEmailOfUser(user_id) {
-//   const response = await client
-//     .from('Auth.Users')
-//     .select('email')
-//     .eq('id', user_id)
-//     .single();
-//     console.log(response.body.Email)
-//   return response.body.Email;
-// }
+export async function getAvatarOfUser(user_id) {
+  const response = await client
+    .from('Users')
+    .select('avatars')
+    .eq('id', user_id)
+    .single();
+  return response.body.avatars;
+}
+
+export async function uploadAvatar(event) {
+  const avatarFile = event.target.files[0]
+  const { data, error } = await client.storage
+  .from('avatars')
+  .upload( 'public/avatar.png', avatarFile, {
+    cacheControl: '3600',
+    upsert: false,
+  })
+  console.log(avatarFile);
+return { data, error }
+}
