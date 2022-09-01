@@ -70,3 +70,10 @@
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
+
+  .icon-credit {
+    font-size: smaller;
+    text-decoration: none;
+    color: #b8e2be;
+    margin-left: 30px;
+  }
