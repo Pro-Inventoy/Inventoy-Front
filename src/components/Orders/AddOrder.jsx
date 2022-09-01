@@ -17,7 +17,7 @@ export default function AddOrder() {
   const handleItem = ({ target }) => setItem(target.value);
   const handleUser = ({ target }) => setUser(target.value);
   const handleLabel = ({ target }) => setLabel(target.value);
-  const allItems = useItems();
+  const allItems = useItems().items;
   const allUsers = useUsers().items;
 
   const handleSubmit = async (e) => {
