@@ -16,6 +16,7 @@ class Hamburger extends React.Component {
       return (
         <div>
         <Menu>
+          <h1 className="app-name">InvenToy</h1>
           <a id="Home" className="menu-item" href="/">{home}<br/> Home </a>
           <a id="Inventory" className="menu-item" href="/inventory">{wareHouse}<br/>Inventory</a>
           <a id="Orders" className="menu-item" href="/orders">{handTruck}<br/>Orders</a>
