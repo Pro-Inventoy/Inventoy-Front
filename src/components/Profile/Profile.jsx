@@ -9,7 +9,7 @@ export default function Profile() {
 
   const [empName, setEmpName] = useState('');
   const [empRank, setEmpRank] = useState('');
-  const [empOrders, setEmpOrders] = useState('');
+  const [empOrders, setEmpOrders] = useState([]);
   const {id} = getUser();
 
   
@@ -23,7 +23,6 @@ export default function Profile() {
 
   const fetchedOrders = async () => {
     const fetchingOrders = await getOrdersOfUser(id)
-    console.log(fetchingOrders);
   setEmpOrders(fetchingOrders);
 
   }

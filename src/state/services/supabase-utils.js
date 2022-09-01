@@ -45,7 +45,6 @@ export async function getOrdersOfUser(user_id) {
     .from('Orders')
     .select('*')
     .eq('user_id', user_id)
-    .single();
   return response.body;
 }
 
