@@ -6,23 +6,34 @@
 .list-item {
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 5px;
-    margin-left: 5px;
     background-color: white;
+    color: black;
+    /* width: 400px; */
 
 }
 
 .list-container {
     background-color: rgb(159, 235, 175);
-    width: 400px;
-    height: 300px;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: auto;
+    /* height: 300px; */
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+    /* overflow-x: auto;
+    overflow-y: auto; */
+    width: 'auto';    
+    border-style: solid;
+    color: rgb(159, 235, 175);
+    
 }
 
 .list-title {
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 5px;
-    margin-left: 5px;
+    width: 400px;
+}
+
+.pie-size {
+    width: 400px;
+}
+
+.overdiv {
+    width: 'auto';    
 }

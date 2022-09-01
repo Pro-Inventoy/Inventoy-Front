@@ -41,14 +41,19 @@
   }
   
   .app-name {
-    font-family: cursive ;
-    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    color: #b8e2be;
     font-size: 40px;
+    font-style: italic;
   }
 
   .app-name-ham {
-    font-family: cursive ;
-    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+
+    color: #b8e2be;
     font-size: 30px;
-    padding-left: 110px;
+    padding-left: 140px;
+    font-style: italic;
   }
