@@ -1,13 +1,10 @@
-/* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from 'react';
-import { ItemContext } from '../context/inventoryContext.jsx';
+import { useEffect, useState } from 'react';
+import client from '../services/client.js';
 import {
   getItems,
-  addItem,
-  updateItem,
-  removeItem,
   getCategories,
   invSubscription,
+  getNameOfCategory,
 } from '../services/inventory-service.js';
 
 export function useItems() {
@@ -18,19 +15,47 @@ export function useItems() {
     let ignore = false;
 
     const fetch = async () => {
-      const { data, error } = await getItems();
+      let { data, error } = await getItems();
       if (ignore) return;
 
       if (error) {
         setError(error);
       }
       if (data) {
+        data = data.map(item => ({
+          "id": item.id,
+          "itemname": item.itemname,
+          "quantity": item.quantity,
+          "cost": item.cost,
+          "category_name": item.Categories.category_name,
+        }
+        ))
         setItems(data);
         invSubscription();
       }
     };
     fetch();
     return () => (ignore = true);
+  }, []);
+
+  useEffect(() => {
+    const subscription = client
+      .from('Inventory')
+      .on("INSERT", async (payload) => {
+        const category_name = await getNameOfCategory(payload.new.categoryId)
+        const newItem = {
+          id: payload.new.id,
+          itemname: payload.new.itemname,
+          cost: payload.new.cost,
+          quantity:payload.new.quantity,
+          category_name: category_name,
+        }
+        setItems(items => [...items, newItem]);
+      })
+      .subscribe((status,e)=>{console.log(status,e)})
+      return () => {
+        client.removeSubscription(subscription);
+      }
   }, []);
 
   return { items, error };
@@ -58,46 +83,5 @@ export function useCategories() {
     fetch();
     return () => (ignore = true);
   }, []);
-  return categories;
-}
-
-function createDispatchActions(dispatch) {
-  return function createAction({ service, type, success }) {
-    return async (...args) => {
-      const { data, error } = await service(...args);
-
-      if (error) console.log(error.message);
-
-      if (data) {
-        dispatch({ type, payload: data });
-        const successMessage = success(data);
-        console.log(successMessage);
-      }
-    };
-  };
-}
-
-export function useItemActions() {
-  const { itemDispatch } = useContext(ItemContext);
-
-  const createAction = createDispatchActions(itemDispatch);
-
-  const add = createAction({
-    service: addItem,
-    type: 'add',
-    success: (data) => `Added ${data.itemname}`,
-  });
-
-  const update = createAction({
-    service: updateItem,
-    type: 'update',
-    success: (data) => `Updated ${data.itemname}`,
-  });
-
-  const remove = createAction({
-    service: removeItem,
-    type: 'remove',
-    success: (data) => `Removed ${data.itemname}`,
-  });
-  return { add, update, remove };
+  return { categories, error } ;
 }

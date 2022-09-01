@@ -4,7 +4,7 @@ import { removeOrder, updateOrder } from '../../state/services/order-service';
 import { addTransaction } from '../../state/services/transaction-service';
 import { getUser } from '../../state/services/user-service';
 export default function Grid( {orders}) {
- 
+
   const columns =  [
     { field: 'id', headerName: 'Order ID', width: 60 },
     { field: 'date', headerName: 'Placed', width: 100 },

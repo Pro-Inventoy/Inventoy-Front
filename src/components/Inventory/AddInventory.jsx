@@ -14,7 +14,7 @@ export default function AddInventory() {
   const handleCategory = ({ target }) => setCategory(target.value);
   const handleItemName = ({ target }) => setItemName(target.value);
   const handleCost = ({ target }) => setCost(target.value);
-  const allCategories = useCategories();
+  const allCategories = useCategories().categories;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,13 +1,8 @@
-import { RealtimeClient } from '@supabase/supabase-js';
-import { useContext, useEffect, useState } from 'react';
-import { OrderContext } from '../context/orderContext.jsx';
+import { useEffect, useState } from 'react';
 import client from '../services/client.js';
 import { getNameOfItem } from '../services/inventory-service.js';
 import {
   getOrders,
-  addOrder,
-  updateOrder,
-  removeOrder
 } from '../services/order-service.js';
 import { getNameOfUser } from '../services/user-service.js';
 
@@ -47,7 +42,7 @@ export function useOrders() {
   }, []);
 
   useEffect(() => {
-    client
+    const subscription = client
       .from('Orders')
       .on("INSERT", async (payload) => {
         const remaining = payload.new.orderquantity - payload.new.completed;
@@ -63,55 +58,14 @@ export function useOrders() {
           employee: employee,
           completed: 0,
           completevalue: payload.new.completed
-        }   
-        console.log('the new item', newItem);
+        }
         setOrders(orders => [...orders, newItem]);
       })
       .subscribe((status,e)=>{console.log(status,e)})
       return () => {
+        client.removeSubscription(subscription);
       }
   }, []);
 
   return { orders, error };
-}
-
-function createDispatchActions(dispatch) {
-  return function createAction({ service, type, success }) {
-    return async (...args) => {
-      const { data, error } = await service(...args);
-
-      if (error) console.log(error.message);
-
-      if (data) {
-        dispatch({ type, payload: data });
-        const successMessage = success(data);
-        console.log(successMessage);
-      }
-    };
-  };
-}
-
-export function useOrderActions() {
-  const { orderDispatch } = useContext(OrderContext);
-
-  const createAction = createDispatchActions(orderDispatch);
-
-  const add = createAction({
-    service: addOrder,
-    type: 'add',
-    success: (data) => `Added ${data.ordername}`,
-  });
-
-  const update = createAction({
-    service: updateOrder,
-    type: 'update',
-    success: (data) => `Updated ${data.ordername}`,
-  });
-
-  const remove = createAction({
-    service: removeOrder,
-    type: 'remove',
-    success: (data) => `Removed ${data.ordername}`,
-  });
-  return { add, update, remove };
 }
