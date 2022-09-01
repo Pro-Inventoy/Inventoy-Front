@@ -17,13 +17,13 @@ export default function ProfileSetup() {
 
      async function uploadAvatar(file) {
       //const avatarFile = setAvatar(e.target.files[0]);
+      const fileName = `${Date.now()}_${file.name}`
       const { data, error } = await client.storage
       .from('avatars')
-      .upload( file.name, file, {
-        cacheControl: '3600',
-        upsert: false,
-      })
-      console.log(file);
+      .upload( fileName, file);
+      const url = await client.storage.from('avatars').getPublicUrl(fileName)
+      console.log(data);
+      console.log(url.publicURL);
     return { data, error }
     }
 
