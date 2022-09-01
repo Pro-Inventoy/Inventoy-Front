@@ -40,6 +40,16 @@ export async function getIdOfUser(user_id) {
   return response.body.id;
 }
 
+export async function getOrdersOfUser(user_id) {
+  const response = await client
+    .from('Orders')
+    .select('*')
+    .eq('user_id', user_id)
+    .single();
+  return response.body;
+}
+
+
 // export async function getEmailOfUser(user_id) {
 //   const response = await client
 //     .from('Auth.Users')
