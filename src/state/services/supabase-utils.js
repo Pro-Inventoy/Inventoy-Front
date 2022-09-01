@@ -21,3 +21,40 @@ export async function logout() {
 
   return (window.location.href = '../');
 }
+
+export async function getRankOfUser(user_id) {
+  const response = await client
+    .from('Users')
+    .select('role')
+    .eq('id', user_id)
+    .single();
+  return response.body.role;
+}
+
+export async function getIdOfUser(user_id) {
+  const response = await client
+    .from('Users')
+    .select('id')
+    .eq('id', user_id)
+    .single();
+  return response.body.id;
+}
+
+export async function getOrdersOfUser(user_id) {
+  const response = await client
+    .from('Orders')
+    .select('*')
+    .eq('user_id', user_id)
+  return response.body;
+}
+
+
+// export async function getEmailOfUser(user_id) {
+//   const response = await client
+//     .from('Auth.Users')
+//     .select('email')
+//     .eq('id', user_id)
+//     .single();
+//     console.log(response.body.Email)
+//   return response.body.Email;
+// }
