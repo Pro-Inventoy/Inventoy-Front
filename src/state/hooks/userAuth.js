@@ -49,18 +49,20 @@ export function useProfile() {
   const { setProfile } = useContext(UserActionContext);
 
   const updateProfile = async ({ ...profile }) => {
-   
+    console.log(profile, 'profile update1');
       const { data, error } = await upsertProfile({
         ...profile,
+        
        
       });
+      console.log(data, 'data log1');
 
       if (error) {
         console.log(error.message);
       }
       if (data) {
         setProfile(data);
-        console.log(`Profile updated for "${data.username}"`);
+        console.log(`Profile updated for "${data.empname}"`);
       }
       
     // }
@@ -79,7 +81,7 @@ export function useProfile() {
     //   }
     //   if (data) {
     //     setProfile(data);
-    //     console.log(`Profile updated for "${data.username}"`);
+    //     console.log(`Profile updated for "${data.empname}"`);
     //   }
     // }
   };

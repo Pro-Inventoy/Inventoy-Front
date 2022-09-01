@@ -2,14 +2,24 @@ import { useState } from 'react';
 import { useProfile } from '../../state/hooks/userAuth.js';
 //import { useForm } from '../../state/hooks/formData.js';
 import { getUser } from '../../state/services/supabase-utils';
-import { FormButton, InputControl } from '../Forms/FormControl.jsx';
+import { FormButton } from '../Forms/FormControl.jsx';
 import './Profile.css';
 
 export default function ProfileSetup() {
-  const [, updateProfile] = useProfile();
-//   const [profile, handleChange] = useForm();
-//   const [preview, setPreview] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+    const [, updateProfile] = useProfile();
+    const [username, setUsername] = useState('');
+    const [avatar, setAvatar] = useState();
+    //const [profile, handleChange] = useForm();
+    //const [preview, setPreview] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+
+    function clearForms() {
+        setUsername('');
+      }
+
+    //   function uploadImage(e) {
+    //     setAvatar([...e.target.files]);
+    //   }
 
 //   const handlePreview = (e) => {
 //     const target = e.target;
@@ -22,49 +32,39 @@ export default function ProfileSetup() {
 //       },
 //     });
 //   };
+        function handleChange(e) {
+            setAvatar(e.target.files[0]);
+        }
 
-
-const [username, setUsername] = useState('');
-
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     const loggedInUser = await getUser();
 
-      const userId = loggedInUser.id;
+      const userId = { ...loggedInUser };
       setIsLoading(true);
+      const userRole = 3;
+      
 
-      await updateProfile({empname: username});
-      await updateProfile(userId.username);
+      await updateProfile({empname: username, role: userRole, avatars: avatar});
+      await updateProfile(userId);
+      
+      clearForms();
       setIsLoading(false);
+    return (window.location.href = '/homepage')
   };
+
 
   return (
     <section className="Profile">
       <form onSubmit={handleSubmit}>
         <h1>Employee Profile Setup</h1>
 
-        {/* <InputControl
-          label="Employee Name"
-          name="empname"
-          required
-          placeholder="enter employee name"
-        //   value={profile.empname}
-          onChange={handleChange}
-        /> */}
 
-        <input value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input value={username} onChange={(e) => setUsername(e.target.value)}/>
 
-        {/* <InputControl
-          className="Avatar"
-          label="Avatar"
-          name="avatar"
-          required
-          type="file"
-          onChange={handlePreview}>
-          {preview && <img src={preview} alt="avatar preview"/>}
-        </InputControl> */}
+        <input type='file' value={avatar} onChange={handleChange}/>
 
-        <FormButton >Update</FormButton>
+        <FormButton>Create Your Profile</FormButton>
       </form>
     </section>
   );
