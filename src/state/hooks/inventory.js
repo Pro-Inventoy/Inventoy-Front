@@ -33,7 +33,7 @@ export function useItems() {
     return () => (ignore = true);
   }, []);
 
-  return items;
+  return { items, error };
 }
 
 export function useCategories() {

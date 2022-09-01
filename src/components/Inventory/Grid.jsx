@@ -7,7 +7,7 @@ import { getUser } from '../../state/services/user-service';
 import client from '../../state/services/client';
 import { RealtimeClient } from '@supabase/supabase-js';
 export default function Grid() {
-  const items = useItems();
+  const { items } = useItems();
   const inventory = items.map(item => ({
       "id": item.id,
       "itemname": item.itemname,

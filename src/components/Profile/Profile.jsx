@@ -7,7 +7,7 @@ export default function Profile() {
   return (
     <span>
       <div className='profilePic'>
-        <img src='https://i.imgur.com/tF6PAok.png'/>
+        <img alt='' src='https://i.imgur.com/tF6PAok.png'/>
         <br></br>
         <button>Edit Picture</button>
       </div>
