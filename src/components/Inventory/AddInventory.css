@@ -6,8 +6,8 @@
     display: inline-flex;
     justify-content: space-evenly;
     width: 100%;
-    /* justify-content: space-evenly;
-    grid-auto-flow: column; */
+    justify-content: space-evenly;
+    grid-auto-flow: column;
     div {
         margin: 20px;
     }

@@ -11,6 +11,7 @@ import ProfileSetup from './AuthPage/ProfileSetup.jsx'
 import Layout from './Page/Layout.jsx'
 import Auth from './AuthPage/Auth.jsx'
 import Scanner from'./Scanner/Scanner.jsx'
+import AboutUs from "./About us/Aboutus";
 import { UserProvider } from '../state/context/UserContext.jsx';
 // import './App.css'
 
@@ -37,6 +38,7 @@ export default function App() {
                         <Route path="orders" element={<Orders />} />
                         <Route path="users" element={<Users />} />
                         <Route path="profile" element={<Profile />} />
+                        <Route path="aboutus" element={<AboutUs />}/>
                         <Route path="scanner" element={<Scanner />}/>
                         <Route path="create-profile" element={<ProfileSetup />} />
                     </Route>
