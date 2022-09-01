@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useResults } from './Result';
 import './Scanner.css'
 
 export default function Scanner() {
@@ -53,6 +54,11 @@ export default function Scanner() {
             <div className={'result' + (hasPhoto ? 'hasPhoto' : '')}>
                 <canvas ref={photoRef}></canvas>
                 <button onClick={handlePhotoClose} className='closeButton'>❌</button>
+            </div>
+            <div>
+                <h2>Results
+                    {useResults(photoRef)}
+                </h2>
             </div>
     </div>
 )};
