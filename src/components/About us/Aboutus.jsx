@@ -4,7 +4,7 @@ export default function AboutUs() {
     return (
         <div className='Aboutus'>
         <div>
-            <img alt=' Elliot Cheifetz'></img>
+            <img alt=' Elliott Cheifetz' src='./elliott.jpg'></img>
             <h1>Elliot Cheifetz</h1>
             <p> About Elliot</p>
             <a href='https://github.com/ElliottProductions'>Github</a>
