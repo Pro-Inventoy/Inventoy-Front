@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 //import { useTransactions } from '../../state/hooks/transaction'
 import { getNameOfUser } from '../../state/services/user-service';
 import Grid  from '../Orders/Grid.jsx';
-import { getUser, getRankOfUser, getOrdersOfUser } from '../../state/services/supabase-utils';
+import { getUser, getRankOfUser, getOrdersOfUser, getAvatarOfUser } from '../../state/services/supabase-utils';
 
 
 export default function Profile() {
 
   const [empName, setEmpName] = useState('');
   const [empRank, setEmpRank] = useState('');
+  const [empAv, setEmpAv] = useState('');
   const [empOrders, setEmpOrders] = useState([]);
   const {id} = getUser();
 
@@ -17,16 +18,19 @@ export default function Profile() {
     const fetchedName = async () => {
       const fetchingName = await getNameOfUser(id)
       
-  setEmpName(fetchingName);
-
+    setEmpName(fetchingName);
   }
 
   const fetchedOrders = async () => {
     const fetchingOrders = await getOrdersOfUser(id)
-  setEmpOrders(fetchingOrders);
-
+    setEmpOrders(fetchingOrders);
   }
 
+  const fetchedAvatar = async () => {
+    const fetchingAvatar = await getAvatarOfUser(id)
+    
+    setEmpAv(fetchingAvatar);
+  }
 
   const fetchedRank = async () => {
     let fetchingRank = await getRankOfUser(id)
@@ -39,12 +43,13 @@ export default function Profile() {
       fetchingRank = 'Admin';
     }
 
-  setEmpRank(fetchingRank);
+    setEmpRank(fetchingRank);
   }
 
   fetchedName()
   fetchedRank()
   fetchedOrders()
+  fetchedAvatar()
 
     .catch(console.error);
 }, [id])
@@ -53,7 +58,7 @@ export default function Profile() {
   return (
     <span>
       <div className='profilePic'>
-        <img src='https://i.imgur.com/tF6PAok.png' alt='employee pfp'/>
+        <img src={`${empAv}`} alt='employee pfp'/>
         <br></br>
         <button>Edit Picture</button>
       </div>

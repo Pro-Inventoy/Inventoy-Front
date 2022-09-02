@@ -60,12 +60,12 @@ export async function getProfile() {
 }
 
 export async function upsertProfile(profile) {
-  const response = await client
+  const { data, error } = await client
     .from('Users')
     .upsert(profile)
     .eq('id', profile.id)
     .single();
-  return response;
+  return { data, error };
 }
 
 
