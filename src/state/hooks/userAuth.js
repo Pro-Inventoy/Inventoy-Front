@@ -3,7 +3,6 @@ import {
   signIn as signInService,
   signUp as signUpService,
   signOut as signOutService,
-  uploadAvatar,
   upsertProfile,
 } from '../services/user-service.js';
 import {
