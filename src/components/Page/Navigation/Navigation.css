@@ -46,6 +46,7 @@
     color: #b8e2be;
     font-size: 40px;
     font-style: italic;
+    margin-top: 7px;
   }
 
   .app-name-ham {
@@ -55,5 +56,6 @@
     color: #b8e2be;
     font-size: 30px;
     padding-left: 140px;
+    margin-top: 15px;
     font-style: italic;
   }

@@ -37,3 +37,14 @@
 .overdiv {
     width: 'auto';    
 }
+
+.loading-spinner {
+    color: rgb(250, 103, 4);
+    text-align: center;
+    background-image: url('./loading-boxes.gif');
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 300px;
+    padding-top: 230px;
+   
+}
