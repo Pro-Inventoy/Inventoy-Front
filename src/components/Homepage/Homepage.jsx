@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { RealtimeClient } from '@supabase/realtime-js'
 import { useTransactions } from '../../state/hooks/transaction'
 import './Homepage.css'
 import client from '../../state/services/client';
