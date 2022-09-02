@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { useTransactions } from '../../state/hooks/transaction'
 import './Homepage.css'
 import client from '../../state/services/client';
-import { getNameOfUser, getUser } from '../../state/services/user-service';
+import { getNameOfUser } from '../../state/services/user-service';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { useOrderData } from "../../state/hooks/order.js";
