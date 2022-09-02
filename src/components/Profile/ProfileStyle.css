@@ -53,4 +53,10 @@
 .profilePic {
     margin-left: 5%;
     margin-top: 10px;
+    width: 400px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
