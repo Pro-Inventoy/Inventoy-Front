@@ -73,7 +73,7 @@ export default function AddInventory() {
         label={'Cost'}
         value={cost}
         onChange={handleCost}
-           />
+          />
         </div>
       
         <div>

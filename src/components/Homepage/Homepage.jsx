@@ -7,6 +7,7 @@ import { getNameOfUser, getUser } from '../../state/services/user-service';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { useOrderData } from "../../state/hooks/order.js";
+import { useWindowDimensions } from '../Page/Layout.jsx';
 
 
 
@@ -109,10 +110,10 @@ useEffect(() => {
     .subscribe((status,e)=>{console.log(status,e)})
 }
 }, []);
-
+const { width, height } = useWindowDimensions();
   return (
     <div className="overdiv">
-    <span>
+    <span className="span-elements">
       <h2 className="list-title">Recent Activity</h2>
       <div className="list-container">
         <div></div>
@@ -124,9 +125,11 @@ useEffect(() => {
           ))}
         </ul> : <h1 className="loading-spinner">LOADING</h1> }
       </div>
-      <div className="pie-size">
-      <Pie data={newData} />
-      </div>
+      {width * 1.3 > height  ? <div className="pie-size-wide">
+      <Pie data={newData}/>
+      </div> : <div className="pie-size">
+      <Pie data={newData}/>
+      </div> }
       
       
       

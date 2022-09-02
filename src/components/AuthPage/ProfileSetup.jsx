@@ -9,9 +9,8 @@ export default function ProfileSetup() {
     const [, updateProfile] = useProfile();
     const [username, setUsername] = useState('');
     const [avatar, setAvatar] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
 
-     async function uploadAvatar(file) {
+    async function uploadAvatar(file) {
       const fileName = `${Date.now()}_${file.name}`
       const { data, error } = await client.storage
       .from('avatars')
@@ -35,7 +34,7 @@ export default function ProfileSetup() {
     const loggedInUser = await getUser();
 
       const userId = { ...loggedInUser };
-      setIsLoading(true);
+      
       const userRole = 3;
     console.log(avatar);
       await uploadAvatar(avatar); 
@@ -43,7 +42,7 @@ export default function ProfileSetup() {
       await updateProfile(userId);
       
       clearForms();
-      setIsLoading(false);
+      
     return (window.location.href = '/homepage')
   };
 

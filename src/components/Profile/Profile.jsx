@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-//import { useTransactions } from '../../state/hooks/transaction'
 import { getNameOfUser } from '../../state/services/user-service';
 import Grid  from '../Orders/Grid.jsx';
 import { getUser, getRankOfUser, getOrdersOfUser, getAvatarOfUser } from '../../state/services/supabase-utils';

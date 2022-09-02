@@ -34,8 +34,14 @@
     width: 400px;
 }
 
+.pie-size-wide {
+    width: 400px;
+    margin-left: 30%;
+}
+
 .overdiv {
-    width: 'auto';    
+    width: 'auto';
+     
 }
 
 .loading-spinner {

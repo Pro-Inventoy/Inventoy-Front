@@ -9,7 +9,7 @@ import {
 } from '../services/user-service.js';
 
 export const UserStateContext = createContext();
-console.log(UserStateContext, 'context');
+
 export const UserActionContext = createContext();
 
 export function UserProvider({ children }) {
