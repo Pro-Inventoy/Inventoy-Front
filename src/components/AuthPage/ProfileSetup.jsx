@@ -48,15 +48,16 @@ export default function ProfileSetup() {
 
   return (
     <section className="Profile">
-      <form onSubmit={handleSubmit}>
-        <h1>Employee Profile Setup</h1>
+      <p className="employeesetup" align="left">Employee Profile Setup</p>
+      <form onSubmit={handleSubmit} className="form-style">
+        
         <br></br>
         <br></br>
-        <p>Please enter your full name</p>
+        <p className="profilesetup">Please enter your full name</p>
         <input value={username} onChange={(e) => setUsername(e.target.value)}/>
         <br></br>
         <br></br>
-        <p>Upload a profile picture</p>
+        <p className="profilesetup">Upload a profile picture</p>
         <input type='file' onInput={(e) => setAvatar(e.target.files[0])}/>
         <br></br>
         <br></br>

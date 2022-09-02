@@ -25,7 +25,7 @@ class Hamburger extends React.Component {
           {/* <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
           <a href="https://icons8.com/icon/FyZQG5LCUbyS/warehouse" className="icon-credit">Menu icons by Icons8</a>
         </Menu>
-        <h1 className="app-name-ham">InvenToy</h1>
+        <h2 className="app-name-ham">InvenToy</h2>
         </div>
         
       );
