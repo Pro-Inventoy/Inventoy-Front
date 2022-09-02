@@ -77,19 +77,18 @@ export default function Homepage() {
 
 useEffect(() => {
   if (!ref.current.inv_subscription) {
-  const REALTIME_URL = process.env.REALTIME_URL || 'ws://localhost:3000/socket' 
-  const socket = new RealtimeClient(REALTIME_URL)
-  socket.connect()
   ref.current.inv_subscription = client
     .from('Transactions')
     .on("*", async (payload) => {
       const transListElement = document.getElementById('transactionList');
       const newTransactionListItem = document.createElement('li');
+      newTransactionListItem.classList = "list-item";
       const newTransactionListImage = document.createElement('img');
       newTransactionListImage.src = payload.new.icon;
       newTransactionListImage.alt = '';
       newTransactionListImage.classList = 'trans-icon';
-      const userName = await (await getNameOfUser(getUser().id)).data.empname;
+      const userId = getUser().id;
+      const userName = await getNameOfUser(userId);
       const newTransactionList = document.createTextNode(userName + payload.new.content)
       newTransactionListItem.appendChild(newTransactionListImage);
       newTransactionListItem.appendChild(newTransactionList);
