@@ -116,13 +116,13 @@ useEffect(() => {
       <h2 className="list-title">Recent Activity</h2>
       <div className="list-container">
         <div></div>
-        <ul id='transactionList'>
+        { transactions.length ? <ul id='transactionList'>
           {transactions.map(item => (
             <li key={item.id} className="list-item">
               <img className='trans-icon' alt='' src={item.icon}/> {item.empname}{item.content}
             </li>
           ))}
-        </ul>
+        </ul> : <h1 className="loading-spinner">LOADING</h1> }
       </div>
       <div className="pie-size">
       <Pie data={newData} />
