@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 // import SlideoutMenu from './SlideoutMenu.jsx';
 import Navigation from '../Navigation/Navigation.jsx';
 import User from './User.jsx';

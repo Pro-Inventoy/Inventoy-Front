@@ -1,5 +1,5 @@
 import './Navigation.css';
-import { handTruck, wareHouse, persons, profile, home } from '../Icons'
+import { handTruck, wareHouse, profile, home, persons } from '../Icons'
 
 export default function Navigation() {
   return (

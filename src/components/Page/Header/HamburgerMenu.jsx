@@ -1,7 +1,7 @@
 import React from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import './HamburgerMenu.css'
-import { handTruck, wareHouse, persons, profile, home } from '../Icons'
+import { handTruck, wareHouse, profile, home, persons } from '../Icons'
 
 
 class Hamburger extends React.Component {
