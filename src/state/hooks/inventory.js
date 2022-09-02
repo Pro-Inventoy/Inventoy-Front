@@ -3,7 +3,6 @@ import client from '../services/client.js';
 import {
   getItems,
   getCategories,
-  invSubscription,
   getNameOfCategory,
 } from '../services/inventory-service.js';
 
@@ -31,7 +30,6 @@ export function useItems() {
         }
         ))
         setItems(data);
-        invSubscription();
       }
     };
     fetch();
