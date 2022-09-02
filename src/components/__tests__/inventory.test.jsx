@@ -9,4 +9,5 @@ it('renders correctly', async() => {
 <div>
     <Inventory/>
 </div>)
-})
+expect(root.render.textContent).toBe()
+});
