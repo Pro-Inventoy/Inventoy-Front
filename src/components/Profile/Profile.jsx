@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getNameOfUser } from '../../state/services/user-service';
 import Grid  from '../Orders/Grid.jsx';
 import { getUser, getRankOfUser, getOrdersOfUser, getAvatarOfUser } from '../../state/services/supabase-utils';
+import './ProfileStyle.css'
 
 
 export default function Profile() {
@@ -58,14 +59,12 @@ export default function Profile() {
     <span>
       <div className='profilePic'>
         <img src={`${empAv}`} alt='employee pfp'/>
-        <br></br>
-        <button>Edit Picture</button>
       </div>
 
       <div>
-        <h2>{`User's name: ${empName}`}</h2>
-        <h3>{`User's Employment level: ${empRank}`}</h3>
-        <h4>User's Worked Orders:</h4>
+        <h2 className="profilesetup">{`User's name: ${empName}`}</h2>
+        <h3 className="profilesetup">{`User's Employment level: ${empRank}`}</h3>
+        <h4 className="profilesetup">User's Worked Orders:</h4>
           <Grid orders={empOrders}/>
       </div>
     </span>
