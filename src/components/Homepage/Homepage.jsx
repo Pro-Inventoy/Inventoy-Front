@@ -86,7 +86,7 @@ useEffect(() => {
       newTransactionListImage.src = payload.new.icon;
       newTransactionListImage.alt = '';
       newTransactionListImage.classList = 'trans-icon';
-      const userId = getUser().id;
+      const userId = payload.new.user_id;
       const userName = await getNameOfUser(userId);
       const newTransactionList = document.createTextNode(userName + payload.new.content)
       newTransactionListItem.appendChild(newTransactionListImage);
