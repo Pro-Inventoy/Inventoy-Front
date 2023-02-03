@@ -1,0 +1,62 @@
+.Profile {
+    margin-left: 20%;
+    /* display: grid; */
+    /* place-conter: center; */
+
+    padding-top: 30px;
+
+    form {
+        background: var(--offset-color);
+        padding: 30px 60px;
+        width: 500px;
+
+        display: grid;
+        row-gap: 25px;
+    }
+
+    .Avatar {
+        input{
+            padding: 0 !important;
+
+        }
+
+        img {
+            height: 32px;
+            width: 32px;
+            object-fit: cover;
+            border: 1px solid var (--black-color);
+            border-radius: 100%;
+        }
+    }
+}
+
+.profilesetup {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+.employeesetup {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 5px;
+    text-align: left;
+    font-style: oblique;
+    font-size: 40px;
+}
+
+.form-style {
+    margin: 20px;
+    text-align: left;
+}
+
+.profilePic {
+    margin-left: 5%;
+    margin-top: 10px;
+    width: 250px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

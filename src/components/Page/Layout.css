@@ -1,0 +1,13 @@
+.Layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: #81A684;
+    height: 70px;
+  }
+
+  .currentpage {
+    position:absolute;
+    top:70px;
+    width: 100%;
+    background-color: #ffffff;
+  }

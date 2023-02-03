@@ -1,0 +1,38 @@
+.Header {
+  background-color: #81A684;
+    /* height:50px; */
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    padding-right: var(--padding);
+    /* height: var(--header-height); */
+    width: 'auto';
+  
+    background: light-green;
+    color: var(--white-color);
+  
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: center;
+  
+    /* .NavigationContainer {
+      display: none;
+      justify-self: end;
+    } */
+
+
+  
+    /* @media (min-width: 700px) {
+      padding-left: var(--padding);
+  
+      .MenuContainer {
+        display: none;
+      }
+  
+      .NavigationContainer {
+        display: initial;
+      }
+    } */
+  }
+  

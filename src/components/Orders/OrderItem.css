@@ -1,0 +1,24 @@
+.order {
+    display: flex;
+    border: 4px solid black;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.order div {
+    border: 0.5px solid black;
+    margin-right: 5px;
+}
+
+input[type="number"] {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.inventoryinput {
+    background-color: rgb(61, 38, 11);
+    display: inline;
+    height: 100px;
+}

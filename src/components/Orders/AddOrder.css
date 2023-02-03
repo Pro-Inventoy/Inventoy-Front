@@ -1,0 +1,66 @@
+.inventoryAddForm {
+    background-color: rgb(159, 235, 175);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 100%;
+    /* justify-content: space-evenly;
+    grid-auto-flow: column; */
+    div {
+        margin: 20px;
+    }
+}
+
+.inputstylin {
+    align-items: baseline;
+    height: 500px;
+}
+
+.divstyle {
+    margin: 30px;
+}
+
+.inputdiv {
+    width: fit-content;
+    
+}
+
+.divwrap {
+    /* margin: 10px; */
+    flex-direction: column;
+    display: flex;
+    align-items: flex-end;
+    
+}
+
+.divwrapper {
+    /* display: inline-block;
+    vertical-align: top; */
+    
+}
+
+.compstyle {
+    margin: 10px;
+    /* padding: 10px; */
+    width: 150px;
+}
+.compstyle2 {
+    margin: 10px;
+    width: 150px;
+    /* padding: 10px; */
+}
+
+.compstyle3 {
+    margin: 10px;
+    width: 150px;
+    /* padding: 10px; */
+}
+
+.addbutton {
+    height: 50px;
+    width: max-content;
+    margin-top: 20px;
+}
+
